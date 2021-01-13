@@ -19,6 +19,7 @@
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
+            <p>こっちはどこかな？</p>
         </div>
     </body>
 </html>
