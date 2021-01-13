@@ -55,6 +55,7 @@
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
+            <p>registerはここ</p>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
