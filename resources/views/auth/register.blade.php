@@ -29,6 +29,17 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <div class="mt-4">
+                <x-jet-label for="age" value="{{ __('age') }}" />
+                <x-jet-input id="age" class="block mt-1 w-full" type="text" name="age" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label  value="{{ __('sex') }}" />
+                <label for="male">男性</label><input type="radio" value="1" id="male" name="sex">
+                <label for="female">女性</label><input type="radio" value="2" id="female" name="sex">
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
@@ -55,7 +66,6 @@
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
-            <p>registerはここ</p>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

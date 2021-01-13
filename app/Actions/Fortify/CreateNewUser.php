@@ -22,10 +22,13 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
+            'age' => ['required', 'integer', ''],
+            'sex' => ['required', 'integer', ''],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
@@ -34,6 +37,8 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
+                'age' => $input['age'],
+                'sex' => $input['sex'],
             ]), function (User $user) {
                 $this->createTeam($user);
             });
@@ -50,7 +55,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'name' => explode(' ', $user->name, 2)[0] . "'s Team",
             'personal_team' => true,
         ]));
     }
