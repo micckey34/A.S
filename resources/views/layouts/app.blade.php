@@ -34,7 +34,6 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-                <a href="guest.blade.php"><p>スロットって何ですか？</a></p>
             </main>
         </div>
 
