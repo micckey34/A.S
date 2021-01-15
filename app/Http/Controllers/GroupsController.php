@@ -21,7 +21,7 @@ class GroupsController extends Controller
         // $groups = Groups::all();
         $groups = Groups::get();
         // $groups = Groups::inrandomorder()->get();
-        ddd($groups);
+        // ddd($groups);
         return view('group.group_list', ['groups' => $groups]);
     }
 

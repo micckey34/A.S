@@ -60,7 +60,7 @@ Route::get('/user_profile/{id}', 'App\Http\Controllers\UsersController@profile')
     ->name('user_profile');
 
 
-Route::get('/group_list', 'App\Http\Controllers\GroupsController@idex')
+Route::get('/group_list', 'App\Http\Controllers\GroupsController@index')
     ->name('group_list');
 
 
