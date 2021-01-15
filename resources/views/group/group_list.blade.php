@@ -12,4 +12,7 @@
         </div>
     </x-slot>
 <h1>グループを探すところ</h1>
+@foreach ($groups as $group)
+<h1>{{ $group->group_name }}</h1>    
+@endforeach
 </x-app-layout>

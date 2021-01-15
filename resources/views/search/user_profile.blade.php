@@ -16,5 +16,13 @@
             </x-jet-nav-link>
         </div>
     </x-slot>
-<img src="{{ $user->profile_photo_path }}" alt="">
+    <img src="{{ $user->profile_photo_url  }}" alt="" width="200px">
+<h1>名前：{{ $user->name }}</h1>
+<h2>年齢：{{ $user->age }}歳</h2>
+@if ($user->sex == 1)
+<h3>性別：男性</h3>
+    @elseif($user->sex == 2)
+<h3>性別：女性</h3>
+@endif
+<h4>{{ $user->profile }}</h4>
 </x-app-layout>
