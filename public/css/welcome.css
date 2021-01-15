@@ -1,0 +1,209 @@
+body{
+    background-color: #FFFEE8;
+    width: 1000px;
+    margin: auto;
+    color: #555;
+}
+
+.login{
+    padding: 0 110px 0 110px;
+    background-color: #FFF;
+    height: 60px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: solid 2px #ddd;
+}
+
+.login a{
+    color: #555;
+    font-size: 14px;
+    margin: 20px;
+}
+
+.summary{
+    padding: 30px 110px 0 110px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.top_register_btn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-weight: bold;
+}
+
+.text_red{
+    color: #E74854;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.size18{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn{
+    display: flex;
+    justify-content: space-around;
+}
+
+.size24{
+    background-color: #FFF7C8;
+    width: 180px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 0 rgba(146, 145, 145);
+    margin: 3px;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.secction_title{
+    padding: 20px 0 30px 0;
+}
+
+.subtitle{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.size12{
+    padding: 2px;
+    font-size: 12px;
+}
+
+.text{
+    padding-top: 10px;
+}
+
+.sarch_box{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.sarch{
+    width: 185px;
+    height: 40px;
+    background-color: #FFF7C8;
+    border-radius: 8px;
+}
+
+.top_section{
+    padding: 0 80px 0 80px;
+}
+
+/* プロフィール登録セクション */
+.profile_section{
+    background-color: #FFF;
+    padding-bottom: 40px;
+    padding: 0 80px 0 80px;
+}
+
+.profile_point{
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile_section p{
+    font-size: 12px;
+}
+
+.profile_photo{
+    display: flex;
+    align-items: flex-end;
+}
+
+.profile_text1{
+    padding-left: 20px;
+    font-weight: bold;
+}
+.profile_text2{
+    padding: 20px 40px 20px 10px;
+    font-weight: bold;
+}
+.profile_img{
+    padding: 10px;
+}
+.profile_text{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.profile_explain{
+    background-color: #FFF7C8;
+    border-radius: 8px;
+    padding: 20px 20px 20px 20px;
+}
+
+.explain_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* 検索の説明セクション */
+.sarch_section{
+    background-color: #FFF;
+    height: 400px;
+    padding-left: 80px;
+    position: relative;
+
+}
+
+
+.sarch_section p{
+    font-size: 12px;
+}
+
+.sarch_section_box{
+    position: relative;
+    position: absolute;
+    bottom: 0px;
+    left: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sarch_text{
+    padding-bottom: 40px;
+}
+
+.backff7{
+    background-color: #FFF7C8;
+    width: 850px;
+    height: 180px;
+    position: relative;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.sarch_img1{
+   position: absolute;
+   top: 20px;
+   left: 250px;
+}
+
+.sarch_img2{
+   position: absolute;
+   top: 20px;
+   left: 450px;
+}
+
+.sarch_img3{
+   position: absolute;
+   top: 20px;
+   left: 650px;
+}

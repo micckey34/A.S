@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/search', function () {
     $users = new User;
     // ddd($users);
-    $user = $users->find(2);
+    $user = $users->find(1);
     return view('search.search', ['users' => $user]);
 })->name('search.search');
 
