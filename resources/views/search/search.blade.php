@@ -19,14 +19,17 @@
     <h1>人を探すトップページ</h1>
     {{-- テスト --}}
     <p>--test--</p>
-    <a href="{{ route('user_profile',$users->id) }}">
-        <h1>{{ $users->name }}</h1>
-        <h1>{{ $users->age}}</h1>
-        @if($users->sex == 1)
+    @foreach ($users as $user)
+    <a href="{{ route('user_profile',$user->id) }}">
+        <h1>{{ $user->name }}</h1>
+        <h1>{{ $user->age}}</h1>
+        @if($user->sex == 1)
         <h1>男性</h1>
-        @elseif($users->sex == 2)
+        @elseif($user->sex == 2)
         <h1>女性</h1>
+        @endif
     </a>
-    @endif
+    @endforeach
+    
     {{-- テスト --}}
 </x-app-layout>

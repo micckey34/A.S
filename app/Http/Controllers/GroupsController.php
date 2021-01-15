@@ -4,30 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Groups;
 
-use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
-
-class UsersController extends Controller
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function search()
+    public function index()
     {
-        $users = User::inrandomorder()->get();
-        return view('search.search', ['users' => $users]);
+        // $groups = Groups::all();
+        $groups = Groups::get();
+        // $groups = Groups::inrandomorder()->get();
+        ddd($groups);
+        return view('group.group_list', ['groups' => $groups]);
     }
-    public function profile($id)
-    {
-        $user = User::find($id);
-        return view('search.user_profile', ['user' => $user]);
-    }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +43,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // ddd($request);  //
+        $validator = Validator::make(
+            $request->all(),
+            ['group_name' => 'require', 'information' => 'require',]
+        );
+
+        $result = Groups::create($request->all());
+        return view('group.searchgroup');
     }
 
     /**
@@ -58,6 +61,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**

@@ -12,4 +12,13 @@
         </div>
     </x-slot>
 <h1>グループを作るところ</h1>
+
+<form action="{{ route('groups.store') }}" method="POST">
+    @csrf
+        <p><label for="title">グループ名</label></p>
+    <p><input type="text" id="title" name="group_name"></p>
+    <p><label for="text">説明欄</label></p>
+    <p><textarea name="information" id="text" cols="30" rows="10"></textarea></p>
+    <button tyoe="submit">登録する</button>
+</form>
 </x-app-layout>
