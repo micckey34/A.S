@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/search', 'App\Http\Controllers\UsersController@search')
     ->name('search.search');
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/searchgroup', function () {
     return view('group.searchgroup');
 })->name('group.searchgroup');
