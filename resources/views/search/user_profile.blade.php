@@ -25,4 +25,17 @@
 <h3>性別：女性</h3>
 @endif
 <h4>{{ $user->profile }}</h4>
+
+<form action="{{ route('matching.store') }}" method="POST">
+    @csrf
+    <input type="hidden" value="{{ $user->id }}" name="destination_id">
+    <button type="submit">Chat Request</button>
+</form>
+{{-- <form action="{{ route('favorite') }}" method="GET">
+    @csrf
+    <input type="hidden" value="{{ $user->id }}" name="like_user_id">
+    <button type="submit">気になる</button>
+</form> --}}
+<a href="{{ route('favorite',$user->id) }}">気になる</a>
+
 </x-app-layout>

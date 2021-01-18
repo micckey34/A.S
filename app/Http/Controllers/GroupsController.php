@@ -18,10 +18,7 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        // $groups = Groups::all();
         $groups = Groups::get();
-        // $groups = Groups::inrandomorder()->get();
-        // ddd($groups);
         return view('group.group_list', ['groups' => $groups]);
     }
 
@@ -43,7 +40,6 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        // ddd($request);  //
         $validator = Validator::make(
             $request->all(),
             ['group_name' => 'require', 'information' => 'require',]

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ route('group_list') }}" :active="request()->routeIs('group_list')">
+            <x-jet-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('group_list')">
                 {{ __('グループを探す') }}
             </x-jet-nav-link>
         </div>
