@@ -17,4 +17,24 @@
         </div>
     </x-slot>
     <h1>同性の友人を探すところ</h1>
+    @foreach ($users as $user)
+    <style>
+        .box{
+            border: 2px solid black;
+            width: 200px;
+            margin-bottom: 1rem;
+        }
+    </style>
+    <div class="box">
+        <a href="{{ route('user_profile',$user->id) }}">
+            <h1>{{ $user->name }}</h1>
+            <h1>{{ $user->age}}</h1>
+            @if($user->sex == 1)
+            <h1>男性</h1>
+            @elseif($user->sex == 2)
+            <h1>女性</h1>
+            @endif
+        </a>
+    </div>
+    @endforeach
 </x-app-layout>
