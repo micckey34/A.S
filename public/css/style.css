@@ -1,0 +1,9 @@
+
+
+.auth_btn{
+    color: #fff;
+    background-color:#E74854;
+}
+.auth_btn :hover{
+    background-color:#ec727c;
+}
