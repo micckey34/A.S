@@ -15,10 +15,10 @@
     </head>
     <body class="antialiased">
        <header>
-            <div class="login">
+            {{-- <div class="login">
                     <a href="{{ route('login') }}" class="text-gray-700 underline">ログイン</a>
                     <a href="{{ route('register') }}" class="text-gray-700 underline">新規登録</a>
-             </div>
+             </div> --}}
              <div class="summary">
                 <img src="image/machibitologo.png" alt="" width="330px">
                 <div>
@@ -27,12 +27,8 @@
                     <div class="top_register_btn">
                         <p class="text_red">安心の登録無料♪</p>
                         <div class="btn">
-                            <div>
                             <a href="{{ route('login') }}" ><p class="text_red size24">ログイン</p></a>
-                            </div>
-                            <div>
                             <a href="{{ route('register') }}" ><p class="text_red size24">新規登録</p></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,28 +119,35 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="chat_section">
             <h2 class="size18 secction_title">いいねを送って、チャットやメッセージで交流しましょう！</h2>
-            <div>
-                <div>
+            <div class="chat_text_box">
+                <div class="chat_text">
                    <h3 class="text_red">お相手やグループの画像の右下にある★マークを押すと、いいねが<br>送られます。</h3>
-                    <p>自分に送られたいいねはプロフィールページから確認できます。</p>
-                    <p>自分からもいいねを返すとマッチングが成立し、メッセージのやり<br>取りが可能になります♪</p>
+                    <p class="subtitle">自分に送られたいいねはプロフィールページから確認できます。</p>
+                    <p>自分からもいいねを返すとマッチングが成立し、メッセージのやり取りが<br>可能になります♪</p>
                 </div>
-                <img src="" alt="">
+                <img src="image/いいね.png" alt="" width="200px" height="150px">
             </div>
-            <div>
-                <div>月額わずか500円！<br>先着１万名様まで<br>永久無料で全ての機能を<br>ご利用頂けます！</div>
-                <div>
+            <div class="chat_text_box">
+                <div class="circle">
+                    <div class="circle_text">
+                        <p>月額わずか500円！
+                        <p>先着１万名様まで</p>
+                        <p>永久無料で全ての機能を</p>
+                        <p>ご利用頂けます！</p>
+                    </div>
+                </div>
+                <div class="chat_text">
                    <h3 class="text_red">充実したチャット機能を使ってオンラインでも楽しもう。</h3>
-                    <p>ビデオチャット機能を使えばオンライン飲み会の開催も出来ちゃう！</p>
-                    <p>有料会員になると、基本機能に加えてビデオチャット機能や、コンサ<br>ルタント機能、ブログ機能等が利用できるようになります♪</p>
+                    <p class="subtitle">ビデオチャット機能を使えばオンライン飲み会の開催も出来ちゃう！</p>
+                    <p>有料会員になると、基本機能に加えてビデオチャット機能や、コンサルタント<br>機能、ブログ機能等が利用できるようになります♪</p>
                 </div>
             </div>
         </section>
+        <div class="fin_text">
         <h2 class="size18 secction_title">さあ、まずは無料登録から！素敵な出会いが待っています！</h2>
-        <div class="text_red size36">
-        <a href="{{ route('register') }}" ><p class="text_red size36">新規登録</p></a>
+        <a href="{{ route('register') }}" ><p class="text_red size24">新規登録</p></a>
         </div>
 
         <footer><p>こちらのサイトは開発練習のための架空のサービスです。</p></footer>
