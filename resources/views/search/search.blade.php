@@ -16,8 +16,10 @@
             </x-jet-nav-link>
         </div>
     </x-slot>
+    <div>
     <h1>人を探すトップページ</h1>
     {{-- テスト --}}
+
     <p>--test--</p>
     @foreach ($users as $user)
     <style>
@@ -51,5 +53,6 @@
     </div>
     @endforeach
     
+
     {{-- テスト --}}
 </x-app-layout>

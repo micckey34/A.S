@@ -6,11 +6,11 @@
 
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
-                {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
+                {{ __('認証アプリケーションから提供された認証コードを入力して、アカウントへのアクセスを確認してください.') }}
             </div>
 
             <div class="mb-4 text-sm text-gray-600" x-show="recovery">
-                {{ __('Please confirm access to your account by entering one of your emergency recovery codes.') }}
+                {{ __('緊急復旧コードの1つを入力して、アカウントへのアクセスを確認してください。') }}
             </div>
 
             <x-jet-validation-errors class="mb-4" />
@@ -44,7 +44,7 @@
                                         recovery = false;
                                         $nextTick(() => { $refs.code.focus() })
                                     ">
-                        {{ __('Use an authentication code') }}
+                        {{ __('認証コードを使用する') }}
                     </button>
 
                     <x-jet-button class="ml-4">
