@@ -68,7 +68,7 @@ class GroupsController extends Controller
         Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
         $id = $group_id;
         $group = Groups::find($id);
-        $messages = Group_message::where('Group_id', $group_id);
+        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
         $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
         return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
     }
@@ -120,7 +120,7 @@ class GroupsController extends Controller
     public function group_page($id)
     {
         $group = Groups::find($id);
-        $messages = Group_message::where('Group_id', $id);
+        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $id)->get();
         $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
         return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
     }
@@ -135,8 +135,9 @@ class GroupsController extends Controller
         $id = $group_id;
         $group = Groups::find($id);
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
-        ddd($messages);
+        // ddd($messages);
         $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
-        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
+        // return view('chat.group_page', ['group' => $group], ['members' => $members], ['posts' => $messages]);
+        return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'posts' => $messages]);
     }
 }
