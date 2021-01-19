@@ -22,7 +22,7 @@
 
 .home_section{
     margin-top: 30px;
-     background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     color: #555;
     text-align: center;
     font-size: 18px;
@@ -30,10 +30,22 @@
 }
 
 .home_section_news{
-    margin-top: 30px;
-    background-color: rgba(255, 255, 255, 0.6);
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.7);
     background-image: url(../image/backimg.png);
-    background-size: cover;
+    background-size: contain;
+    color: #555;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    /* overflow: scroll; */
+}
+
+.section{
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.7);
+    background-image: url(../image/backimg.png);
+    background-size: contain;
     color: #555;
     text-align: center;
     font-size: 18px;
@@ -43,6 +55,12 @@
 .home_section_news h3{
     padding: 30px 0px 10px 0px;
     color: #E74854;
+}
+
+.home_section_news h3:hover{
+    padding: 30px 0px 10px 0px;
+    color: #411d5f;
+    text-decoration: underline;
 }
 
 .news_list{
@@ -67,20 +85,24 @@
 
 .select_data_box{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
 }
 
 .select_data{
-    width: 160px;
-    height: 200px;
+    margin-left: 35px;
+    padding-top: 50px;
+    /* height: 200px; */
     /* background-color: lightskyblue; */
     font-size: 12px;
     color: #555;
+    display: flex;
+    align-items: flex-end;
 }
 
 .select_data_img{
     width: 160px;
-    height: 160px; /*データが入ったら削除*/
+    /* height: 160px; データが入ったら削除 */
     border-radius: 50%;
     background-color: lightblue;
 }
@@ -92,4 +114,97 @@
     font-weight: bold;
     text-align: center;
     color: #888;
+}
+
+.create_form{
+    padding-top: 40px;
+    text-align: center;
+}
+
+.button{
+    background-color: #FFF7C8;
+    width: 180px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 0 #ddd;
+    margin: auto;
+    font-size: 24px;
+    font-weight: bold;
+    color: #E74854;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover{
+    background-color: #ffee8c;
+}
+
+.comment{
+    margin: auto;
+    width: 400px;
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.user_img{
+    padding-left: 50px;
+}
+
+.favorite_btn{
+    width: 100%;
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.like_button{
+    background-color: #FFF7C8;
+    width: 180px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 0 #ddd;
+    font-size: 24px;
+    font-weight: bold;
+    color: #E74854;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like_button:hover{
+    background-color: #ffee8c;
+}
+
+.group_data{
+    margin: 20px;
+    width: 250px;
+    height: 100px;
+    background-color: #dae7fc;
+    color: #E74854;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 0 #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select_group{
+    margin-left: 35px;
+    padding-top: 50px;
+    /* height: 200px; */
+    /* background-color: lightskyblue; */
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+}
+
+.select_group h1{
+    font-size: 24px;
+    color: #E74854;
+    padding-bottom: 20px;
+
 }

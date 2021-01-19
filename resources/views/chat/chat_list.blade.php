@@ -4,13 +4,15 @@
             {{ __('チャットリスト') }}
         </h2>
     </x-slot>
-<h1>チャットの一覧のページ</h1>
+    <section class="home_section_news">
+        <div class="select_data_box">
+            {{-- チャット一覧の表示 --}}
+        </div>
+        <div>
+            
+        </div>
+    </section>
 
-<textarea name="" id="textarea" cols="30" rows="10"></textarea>
-<button>☺</button>
-<div>
-<p id="emoji">&#x1f600;</p>
-</div>
 
 
 </x-app-layout>
