@@ -4,6 +4,7 @@
             {{ __('チャットリスト') }}
         </h2>
     </x-slot>
+
     <h1>参加中のグループ</h1>
     @foreach ($groups as $group)
         <div class="group">
@@ -13,6 +14,6 @@
         </div>    
     @endforeach
     <h1>マッチングした相手</h1>
-    
+   
 
 </x-app-layout>
