@@ -137,7 +137,6 @@ class GroupsController extends Controller
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
         // ddd($messages);
         $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
-        // return view('chat.group_page', ['group' => $group], ['members' => $members], ['posts' => $messages]);
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'posts' => $messages]);
     }
 }
