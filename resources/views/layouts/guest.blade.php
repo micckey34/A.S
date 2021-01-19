@@ -5,13 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Machibito') }}</title>
+
+        <title>Machibito</title>
+        <link rel="icon" href="machibito.ico">
+
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="css/style.css">
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
@@ -19,7 +23,6 @@
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
-            <p>こっちはどこかな？</p>
         </div>
     </body>
 </html>

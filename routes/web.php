@@ -71,6 +71,7 @@ Route::get('/user_profile/{id}', 'App\Http\Controllers\MatchingController@profil
     ->name('user_profile');
 
 
+
 //グループ検索
 Route::get('/group_list', 'App\Http\Controllers\GroupsController@index')
     ->name('group_list');
@@ -80,6 +81,7 @@ Route::get('/group_list', 'App\Http\Controllers\GroupsController@index')
 Route::middleware(['auth:sanctum', 'verified'])->get('/create_group', function () {
     return view('group.create_group');
 })->name('create_group');
+
 
 
 //グループ詳細画面
