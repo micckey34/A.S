@@ -12,8 +12,8 @@
 @endforeach
 <h2>チャット</h2>
 <div class="output">
-@foreach ($posts as $post)
-    <p>{{ $post->name }}：{{ $post->message }}</p>
+@foreach ($messages as $message)
+    <p>{{ $message->name }}：{{ $message->message }}</p>
 @endforeach
 </div>
 <form action="{{ route('message') }}" method="POST">
