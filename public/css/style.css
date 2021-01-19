@@ -1,10 +1,30 @@
+header{
+    position: fixed;
+    top: 64px;
+    width: 100%;
+    z-index: 1;
+}
 
-.navi_box{
+.header_text{
     width: 1000px;
     margin: auto;
 }
-.title_box{
+
+.navibrock{
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+
+}
+
+.navi{
     width: 1000px;
+    margin: auto;
+}
+
+.title_box{
     margin: auto;
     display: flex;
 }
@@ -12,6 +32,7 @@
 .content{
     width: 1000px;
     margin: auto;
+    margin-top: 160px;
 }
 
 .search_content{
@@ -30,19 +51,22 @@
 }
 
 .home_section_news{
-    height: 600px;
+    min-height: 100vh;
     background-color: rgba(255, 255, 255, 0.7);
     background-image: url(../image/backimg.png);
     background-size: contain;
     color: #555;
-    text-align: center;
     font-size: 18px;
     font-weight: bold;
     /* overflow: scroll; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .section{
-    height: 600px;
+    min-height: 100vh;
     background-color: rgba(255, 255, 255, 0.7);
     background-image: url(../image/backimg.png);
     background-size: contain;
@@ -53,11 +77,13 @@
 }
 
 .home_section_news h3{
+    width: 400px;
     padding: 30px 0px 10px 0px;
     color: #E74854;
 }
 
 .home_section_news h3:hover{
+    display: block;
     padding: 30px 0px 10px 0px;
     color: #411d5f;
     text-decoration: underline;
@@ -108,7 +134,6 @@
 }
 
 .footer{
-    padding-top: 100px;
     font-size: 9px;
     background-color: #F3F4F6;
     font-weight: bold;
@@ -181,7 +206,7 @@
 
 .group_data{
     margin: 20px;
-    width: 250px;
+    width: 200px;
     height: 100px;
     background-color: #dae7fc;
     color: #E74854;
@@ -218,4 +243,30 @@
 .username{
     width: 50px;
     overflow: hidden;
+}
+
+.chath1{
+    padding: 20px;
+    color:#555;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chath1_red{
+    padding: 20px;
+    color:#E74854;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chat_member{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    overflow: hidden;
+    color: #555;
+    font-size: 12px;
+    border-radius: 50%;
 }
