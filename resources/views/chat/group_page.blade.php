@@ -4,6 +4,7 @@
             {{ $group->group_name }}
         </h2>
     </x-slot>
+
         <section class="home_section_news">
             <h1 class="chath1_red">{{ $group->group_name }}へようこそ！</h1>
             <h2>参加メンバー</h2>
@@ -16,10 +17,11 @@
             @endforeach
             </div>
 
+
             <h2>チャット</h2>
             <div class="output">
             @foreach ($messages as $message)
-                <p>{{ $message->message }}</p>
+                <p>{{ $message->name }}：{{ $message->message }}</p>
             @endforeach
             </div>
             <form action="{{ route('message') }}" method="POST">
