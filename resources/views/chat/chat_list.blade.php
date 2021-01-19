@@ -5,15 +5,18 @@
         </h2>
     </x-slot>
 
-    <h1>参加中のグループ</h1>
+    <section class="section">
+
+    <h1 class="chath1">参加中のグループ</h1>
+    <div class="select_data_box">
     @foreach ($groups as $group)
-        <div class="group">
-            <a href="{{ route('group_page',$group->id) }}">
-                <h1>{{ $group->group_name }}</h1>    
+            <a href="{{ route('group_page',$group->id) }}" class="group_data">
+                <h1 class="groupname">{{ $group->group_name }}</h1>
             </a>
-        </div>    
     @endforeach
-    <h1>マッチングした相手</h1>
-   
+    </div>
+    <h1 class="chath1">マッチングした相手</h1>
+    </section>
+
 
 </x-app-layout>
