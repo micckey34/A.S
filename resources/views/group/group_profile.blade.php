@@ -11,10 +11,12 @@
             </x-jet-nav-link>
         </div>
     </x-slot>
-<h1>グループを探すところ</h1>
-@foreach ($groups as $group)
-<a href="{{ route('group_profile',$group->id) }}">
-    <h1>{{ $group->group_name }}</h1>    
-</a>
-@endforeach
+<h1>{{ $group->group_name }}</h1>
+<h1>{{ $group->information }}</h1>
+
+<form action="{{ route('group_join') }}" method="POST">
+    @csrf
+    <input type="hidden" name="group_id" value="{{ $group->id }}">
+    <button type="submit">グループに加入する！</button>
+</form>
 </x-app-layout>

@@ -83,6 +83,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/create_group', function (
 })->name('create_group');
 
 
+
+//グループ詳細画面
+Route::get('/group_profile/{id}', 'App\Http\Controllers\GroupsController@show')
+    ->name('group_profile');
+
+
+//グループ参加機能
+Route::post('/group_profile', 'App\Http\Controllers\GroupsController@join')
+    ->name('group_join');
+
+
 //いいね機能
 Route::get('/{like_user_id}', 'App\Http\Controllers\MatchingController@favorite')
     ->name('favorite');

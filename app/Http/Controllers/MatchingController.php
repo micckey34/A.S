@@ -72,7 +72,7 @@ class MatchingController extends Controller
         $user_id = Auth::user()->id;
 
         $destination_id =  $request->destination_id;
-        Requests::insert(['user_id' => $user_id, 'destination_id' => $destination_id]);
+        Requests::insert(['user_id' => $user_id, 'destination_id' => $destination_id, 'created_at' => now()]);
         return redirect()->route('user_profile', $destination_id);
     }
 
@@ -93,7 +93,7 @@ class MatchingController extends Controller
         // ddd($id);
 
         if (!isset($id[0])) {
-            Likes::insert(['user_id' => $user_id, 'like_user_id' => $like_user_id]);
+            Likes::insert(['user_id' => $user_id, 'like_user_id' => $like_user_id, 'created_at' => now()]);
             return redirect()->route('user_profile', $like_user_id);
         } else {
             $query = Likes::query();

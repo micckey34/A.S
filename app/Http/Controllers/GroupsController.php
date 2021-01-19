@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Groups;
+use App\Models\Group_join;
+
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Validator;
 use PHPUnit\TextUI\XmlConfiguration\Group;
+
 
 class GroupsController extends Controller
 {
@@ -23,16 +27,6 @@ class GroupsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -44,8 +38,20 @@ class GroupsController extends Controller
             $request->all(),
             ['group_name' => 'require', 'information' => 'require',]
         );
-
         $result = Groups::create($request->all());
+
+        $group = Groups::orderBy('created_at', 'desc')->first();
+        $group_id = $group->id;
+
+        $user_id = Auth::user()->id;
+
+        Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
+        $id = $group_id;
+        $group = Groups::find($id);
+        return view('chat.group_page', ['group' => $group]);
+
+
+
         return view('group.searchgroup');
     }
 
@@ -57,9 +63,20 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        //
+        $group = Groups::find($id);
+
+        return view('group.group_profile', ['group' => $group]);
     }
 
+    public function join(Request $data)
+    {
+        $group_id = $data->group_id;
+        $user_id = Auth::user()->id;
+        Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
+        $id = $group_id;
+        $group = Groups::find($id);
+        return view('chat.group_page', ['group' => $group]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -89,8 +106,11 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($group_id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $data = Group_join::where('user_id', $user_id);
+        $data = Group_join::where('group_id', $group_id)->delete();
+        return view('group.searchgroup');
     }
 }

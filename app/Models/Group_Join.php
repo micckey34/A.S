@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Group_Join extends Model
+class Group_join extends Model
 {
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
 }
