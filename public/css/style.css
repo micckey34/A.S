@@ -190,6 +190,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-wrap: break-word;
 }
 
 .select_group{
@@ -207,4 +208,14 @@
     color: #E74854;
     padding-bottom: 20px;
 
+}
+
+.groupname{
+    width: 150px;
+    overflow: hidden;
+}
+
+.username{
+    width: 50px;
+    overflow: hidden;
 }
