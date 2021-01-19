@@ -68,9 +68,10 @@ class GroupsController extends Controller
         Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
         $id = $group_id;
         $group = Groups::find($id);
-        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
         $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
-        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
+        // $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
+        $messages = '';
+        return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
     /**
      * Show the form for editing the specified resource.
@@ -122,7 +123,7 @@ class GroupsController extends Controller
         $group = Groups::find($id);
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $id)->get();
         $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
-        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
+        return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 
     public function message(Request $request)
@@ -137,6 +138,6 @@ class GroupsController extends Controller
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
         // ddd($messages);
         $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
-        return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'posts' => $messages]);
+        return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 }
