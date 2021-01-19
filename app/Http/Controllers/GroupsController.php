@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Models\Groups;
-use App\Models\Group_join;
-
-use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Validator;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\Groups;
+use App\Models\Group_join;
+use App\Models\Group_message;
 
 class GroupsController extends Controller
 {
@@ -42,17 +40,13 @@ class GroupsController extends Controller
 
         $group = Groups::orderBy('created_at', 'desc')->first();
         $group_id = $group->id;
-
         $user_id = Auth::user()->id;
-
         Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
         $id = $group_id;
         $group = Groups::find($id);
-        return view('chat.group_page', ['group' => $group]);
-
-
-
-        return view('group.searchgroup');
+        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
+        $messages = Group_message::where('Group_id', $group_id);
+        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
     }
 
     /**
@@ -64,7 +58,6 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = Groups::find($id);
-
         return view('group.group_profile', ['group' => $group]);
     }
 
@@ -75,7 +68,9 @@ class GroupsController extends Controller
         Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
         $id = $group_id;
         $group = Groups::find($id);
-        return view('chat.group_page', ['group' => $group]);
+        $messages = Group_message::where('Group_id', $group_id);
+        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
+        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
     }
     /**
      * Show the form for editing the specified resource.
@@ -109,8 +104,39 @@ class GroupsController extends Controller
     public function destroy($group_id)
     {
         $user_id = Auth::user()->id;
-        $data = Group_join::where('user_id', $user_id);
-        $data = Group_join::where('group_id', $group_id)->delete();
+        $query = ['user_id' => $user_id, 'group_id' => $group_id];
+        $data = Group_join::where($query);
+        $result = $data->delete();
         return view('group.searchgroup');
+    }
+
+    public function list()
+    {
+        $user_id = Auth::user()->id;
+        $group = Group_join::join('groups', 'group_joins.group_id', '=', 'groups.id')->where('user_id', $user_id)->get();
+        return view('chat.chat_list', ['groups' => $group]);
+    }
+
+    public function group_page($id)
+    {
+        $group = Groups::find($id);
+        $messages = Group_message::where('Group_id', $id);
+        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
+        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
+    }
+
+    public function message(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        $group_id = $request->group_id;
+        $message = $request->message;
+        $text = Group_message::create(['user_id' => $user_id, 'group_id' => $group_id, 'message' => $message, 'created_at' => now()]);
+
+        $id = $group_id;
+        $group = Groups::find($id);
+        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
+        ddd($messages);
+        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
+        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
     }
 }

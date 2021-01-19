@@ -44,10 +44,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/searchgroup', function ()
 })->name('group.searchgroup');
 
 
-//チャットルーム
-Route::middleware(['auth:sanctum', 'verified'])->get('/chat_list', function () {
-    return view('chat.chat_list');
-})->name('chat.chat_list');
+//チャットルームトップ
+Route::get('/chat_list', 'App\Http\Controllers\GroupsController@list')
+    ->name('list');
 
 
 //友達検索
@@ -71,7 +70,6 @@ Route::get('/user_profile/{id}', 'App\Http\Controllers\MatchingController@profil
     ->name('user_profile');
 
 
-
 //グループ検索
 Route::get('/group_list', 'App\Http\Controllers\GroupsController@index')
     ->name('group_list');
@@ -81,7 +79,6 @@ Route::get('/group_list', 'App\Http\Controllers\GroupsController@index')
 Route::middleware(['auth:sanctum', 'verified'])->get('/create_group', function () {
     return view('group.create_group');
 })->name('create_group');
-
 
 
 //グループ詳細画面
@@ -95,5 +92,14 @@ Route::post('/group_profile', 'App\Http\Controllers\GroupsController@join')
 
 
 //いいね機能
-Route::get('/{like_user_id}', 'App\Http\Controllers\MatchingController@favorite')
+Route::get('/user_profile/{like_user_id}', 'App\Http\Controllers\MatchingController@favorite')
     ->name('favorite');
+
+
+//グループごとのページ
+Route::get('/group_page/{id}', 'App\Http\Controllers\GroupsController@group_page')
+    ->name('group_page');
+
+//グループチャット、メッセージ
+Route::post('/group_page', 'App\Http\Controllers\GroupsController@message')
+    ->name('message');
