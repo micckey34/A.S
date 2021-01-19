@@ -13,6 +13,8 @@
     </x-slot>
 <h1>グループを探すところ</h1>
 @foreach ($groups as $group)
-<h1>{{ $group->group_name }}</h1>    
+<a href="{{ route('group_profile',$group->id) }}">
+    <h1>{{ $group->group_name }}</h1>    
+</a>
 @endforeach
 </x-app-layout>

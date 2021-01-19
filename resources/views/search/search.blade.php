@@ -19,19 +19,40 @@
     <div>
     <h1>人を探すトップページ</h1>
     {{-- テスト --}}
-    <div class="search_content">
-        @foreach ($users as $user)
+
+    <p>--test--</p>
+    @foreach ($users as $user)
+    <style>
+        .box{
+            border: 2px solid black;
+            width: 200px;
+            margin-bottom: 1rem;
+        }
+        a{
+            display: flex;
+            justify-content: space-between;
+        }
+        img{
+            width: 80px;
+            border-radius: 50%;
+        }
+    </style>
+    <div class="box">
         <a href="{{ route('user_profile',$user->id) }}">
-            <h1>{{ $user->name }}</h1>
-            <h1>{{ $user->age}}</h1>
-            @if($user->sex == 1)
-            <h1>男性</h1>
-            @elseif($user->sex == 2)
-            <h1>女性</h1>
-            @endif
-        </a>
-        @endforeach
+            <img src="{{ $user->profile_photo_url  }}" alt="">
+            <div>
+                <h1>{{ $user->name }}</h1>
+                <h1>{{ $user->age}}</h1>
+                @if($user->sex == 1)
+                <h1>男性</h1>
+                @elseif($user->sex == 2)
+                <h1>女性</h1>
+                @endif
+            </div>
+            </a>
     </div>
-  </div>
+    @endforeach
+    
+
     {{-- テスト --}}
 </x-app-layout>
