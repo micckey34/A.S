@@ -4,13 +4,15 @@
             {{ __('チャットリスト') }}
         </h2>
     </x-slot>
-<h1>チャットの一覧のページ</h1>
-
-<textarea name="" id="textarea" cols="30" rows="10"></textarea>
-<button>☺</button>
-<div>
-<p id="emoji">&#x1f600;</p>
-</div>
-
+    <h1>参加中のグループ</h1>
+    @foreach ($groups as $group)
+        <div class="group">
+            <a href="{{ route('group_page',$group->id) }}">
+                <h1>{{ $group->group_name }}</h1>    
+            </a>
+        </div>    
+    @endforeach
+    <h1>マッチングした相手</h1>
+    
 
 </x-app-layout>

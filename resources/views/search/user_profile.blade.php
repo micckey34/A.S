@@ -34,4 +34,10 @@
 
 <a href="{{ route('favorite',$user->id) }}">気になる</a>
 
+{{-- <form action="{{ route('favorite') }}" method="POST">
+    @csrf
+    <input type="hidden" value="{{ $user->id }}" name="destination_id">
+    <button type="submit">気になる！！</button>
+</form> --}}
+
 </x-app-layout>
