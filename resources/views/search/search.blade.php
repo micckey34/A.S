@@ -16,20 +16,22 @@
             </x-jet-nav-link>
         </div>
     </x-slot>
+    <div>
     <h1>人を探すトップページ</h1>
     {{-- テスト --}}
-    <p>--test--</p>
-    @foreach ($users as $user)
-    <a href="{{ route('user_profile',$user->id) }}">
-        <h1>{{ $user->name }}</h1>
-        <h1>{{ $user->age}}</h1>
-        @if($user->sex == 1)
-        <h1>男性</h1>
-        @elseif($user->sex == 2)
-        <h1>女性</h1>
-        @endif
-    </a>
-    @endforeach
-    
+    <div class="search_content">
+        @foreach ($users as $user)
+        <a href="{{ route('user_profile',$user->id) }}">
+            <h1>{{ $user->name }}</h1>
+            <h1>{{ $user->age}}</h1>
+            @if($user->sex == 1)
+            <h1>男性</h1>
+            @elseif($user->sex == 2)
+            <h1>女性</h1>
+            @endif
+        </a>
+        @endforeach
+    </div>
+  </div>
     {{-- テスト --}}
 </x-app-layout>
