@@ -5,22 +5,21 @@
         </h2>
     </x-slot>
     <section class="home_section_news">
-        <h3>お知らせ</h3>
-        <ul class="news_list">
-            <li>○○さんからいいねが届いています</li>
-            <li>新しいメッセージがあります</li>
-        </ul>
-            <a href="{{ route('profile.show') }}"><h3>プロフィール情報</h3></a>
-         <div>
-         </div>
-
-
-        <h3>参加中のグループ</h3>
-        {{-- 通知の表示 --}}
+        <div class="home_box">
+            <div class="home_content_box">
+                <div class="home_content c1"></div>
+                <a href="{{ route('lover_search') }}"><div class="home_content c2"><p>恋人を探す</p></div></a>
+                <div class="home_content c3"></div>
+            </div>
+            <div  class="home_content_box">
+                <a href="{{ route('friend_search') }}"><div class="home_content c4"><p>友人を探す</p></div></a>
+                <div class="home_content c5"></div>
+                <a href="{{ route('group_list') }}"><div class="home_content c6"><p>仲間を探す</p></div></a>
+            </div>
+        </div>
         @if ($requests == '')
         <p>新しい通知はございません</p>
         @else
-        <p class="home_section_p">新しいメッセージがあります</p>
             @foreach ($requests as $request)
                 <p>{{ $request->name }}さんからリクエストが来ています！</p>
                 <form action="{{ route('permit') }}" method="POST">
@@ -39,9 +38,5 @@
                 </form>
             @endforeach
         @endif
-
-        <h3>最近やり取りを行ったお相手</h3>
     </section>
-
-
 </x-app-layout>

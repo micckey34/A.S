@@ -30,7 +30,7 @@
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 title_box">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 title_box header_text">
                     {{ $header }}
                 </div>
             </header>
@@ -39,12 +39,12 @@
             <main class="content">
                 {{ $slot }}
             </main>
+            <p class="footer">こちらのサイトは開発練習のための架空のサービスです。</p>
         </div>
 
         @stack('modals')
 
         @livewireScripts
 
-        <p class="footer">こちらのサイトは開発練習のための架空のサービスです。</p>
     </body>
 </html>

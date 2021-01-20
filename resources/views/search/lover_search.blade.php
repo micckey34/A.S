@@ -30,7 +30,7 @@
         <a href="{{ route('user_profile',$user->id) }}">
             <div>
                 <img src="{{ $user->profile_photo_url  }}" alt="" class="select_data_img">
-                <h1>{{ $user->name }}</h1>
+                <h1 class="username">{{ $user->name }}</h1>
                 <h1>{{ $user->age}}</h1>
                 @if($user->sex == 1)
                 <h1>男性</h1>

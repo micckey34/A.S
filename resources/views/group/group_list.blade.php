@@ -17,7 +17,7 @@
                 @foreach ($groups as $group)
 
                 <a href="{{ route('group_profile',$group->id) }}" class="group_data">
-                <h1>{{ $group->group_name }}</h1>
+                <h1 class="groupname">{{ $group->group_name }}</h1>
                 </a>
 
                 @endforeach

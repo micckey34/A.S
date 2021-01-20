@@ -42,7 +42,7 @@ Route::get('/search', 'App\Http\Controllers\MatchingController@search')
 
 //グループページトップ
 Route::middleware(['auth:sanctum', 'verified'])->get('/searchgroup', function () {
-    return view('group.searchgroup');
+    return view('group.group_list');
 })->name('group.searchgroup');
 
 

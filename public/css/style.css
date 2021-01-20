@@ -1,10 +1,30 @@
+header{
+    position: fixed;
+    top: 64px;
+    width: 100%;
+    z-index: 1;
+}
 
-.navi_box{
+.header_text{
     width: 1000px;
     margin: auto;
 }
-.title_box{
+
+.navibrock{
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+
+}
+
+.navi{
     width: 1000px;
+    margin: auto;
+}
+
+.title_box{
     margin: auto;
     display: flex;
 }
@@ -12,6 +32,7 @@
 .content{
     width: 1000px;
     margin: auto;
+    margin-top: 160px;
 }
 
 .search_content{
@@ -30,19 +51,22 @@
 }
 
 .home_section_news{
-    height: 600px;
+    min-height: 100vh;
     background-color: rgba(255, 255, 255, 0.7);
     background-image: url(../image/backimg.png);
     background-size: contain;
     color: #555;
-    text-align: center;
     font-size: 18px;
     font-weight: bold;
     /* overflow: scroll; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .section{
-    height: 600px;
+    min-height: 100vh;
     background-color: rgba(255, 255, 255, 0.7);
     background-image: url(../image/backimg.png);
     background-size: contain;
@@ -53,11 +77,13 @@
 }
 
 .home_section_news h3{
+    width: 400px;
     padding: 30px 0px 10px 0px;
     color: #E74854;
 }
 
 .home_section_news h3:hover{
+    display: block;
     padding: 30px 0px 10px 0px;
     color: #411d5f;
     text-decoration: underline;
@@ -102,13 +128,21 @@
 
 .select_data_img{
     width: 160px;
-    /* height: 160px; データが入ったら削除 */
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: lightblue;
+}
+
+.chat_img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
     border-radius: 50%;
     background-color: lightblue;
 }
 
 .footer{
-    padding-top: 100px;
     font-size: 9px;
     background-color: #F3F4F6;
     font-weight: bold;
@@ -181,7 +215,7 @@
 
 .group_data{
     margin: 20px;
-    width: 250px;
+    width: 200px;
     height: 100px;
     background-color: #dae7fc;
     color: #E74854;
@@ -190,6 +224,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-wrap: break-word;
 }
 
 .select_group{
@@ -208,3 +243,142 @@
     padding-bottom: 20px;
 
 }
+
+.groupname{
+    width: 150px;
+    overflow: hidden;
+}
+
+.username{
+    width: 50px;
+    overflow: hidden;
+}
+
+.chath1{
+    padding: 20px;
+    color:#555;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chath1_red{
+    padding: 20px;
+    color:#E74854;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chatmember{
+    width: 200px;
+    height: 60vh;
+    margin: 10px;
+    overflow: scroll;
+    color: #555;
+    font-size: 12px;
+}
+
+.chat_style{
+    width: 100%;
+    display: flex;
+    justify-content: space-around
+}
+
+.output{
+    height: 60vh;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: scroll;
+}
+
+/* スクロールの幅の設定 */
+.output::-webkit-scrollbar {
+  width: 5px;
+  height: 0px;
+}
+.chatmember::-webkit-scrollbar {
+  width: 5px;
+  height: 0px;
+}
+
+/* スクロールの背景の設定 */
+.output::-webkit-scrollbar-track {
+background-color: rgba(86, 86, 87, 0.212);
+}
+.chatmember::-webkit-scrollbar-track {
+background-color: rgba(86, 86, 87, 0.212);
+}
+
+/* スクロールのつまみ部分の設定 */
+.output::-webkit-scrollbar-thumb {
+background-color: rgba(81, 80, 82, 0.466);
+}
+.chatmember::-webkit-scrollbar-thumb {
+background-color: rgba(81, 80, 82, 0.466);
+}
+
+.output p{
+    font-size: 12px;
+}
+
+.withdrawal{
+    margin-top: 100px;
+    font-size: 12px;
+}
+
+.home_content{
+    background-color: #ffee8c;
+    width: 250px;
+    height: 180px;
+    transform: rotate(-20deg);
+    margin: 0 8px 0 8px;
+    border-radius: 20px;
+     box-shadow: 4px 4px 4px 0 rgb(206, 205, 205);
+}
+
+.home_content_box{
+    display: flex;
+}
+
+.home_box{
+    margin-top: 50px;
+}
+
+.c1{
+    background-image: url(../image/通話.png);
+    background-size: cover;
+}
+
+.c2{
+    background-color:#fcd7d7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c3{
+    background-image: url(../image/恋人.jpg);
+    background-size: cover;
+}
+
+.c4{
+   background-color: #ffee8c;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.c5{
+    background-image: url(../image/ぐるーぷ.jpeg);
+    background-size: cover;
+}
+
+.c6{
+   background-color: #C1FFB6;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
