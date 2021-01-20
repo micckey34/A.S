@@ -14,12 +14,16 @@ use function PHPUnit\Framework\isEmpty;
 
 class MatchingController extends Controller
 {
+
+    //検索トップ画面
     public function search()
     {
         $users = User::inrandomorder()->get();
         return view('search.search', ['users' => $users]);
     }
 
+
+    //友達検索
     public function friendsearch()
     {
         $sex = Auth::user()->sex;
@@ -27,6 +31,8 @@ class MatchingController extends Controller
         return view('search.search', ['users' => $users]);
     }
 
+
+    //恋人検索
     public function loversearch()
     {
         $user_sex = Auth::user()->sex;
@@ -39,13 +45,14 @@ class MatchingController extends Controller
         return view('search.search', ['users' => $users]);
     }
 
+    //ユーザー詳細画面
     public function profile($id)
     {
         $user = User::find($id);
         return view('search.user_profile', ['user' => $user]);
     }
 
-
+    //ホーム画面
     public function index()
     {
         $user_id = Auth::user()->id;
@@ -71,6 +78,9 @@ class MatchingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    //リクエスト送信
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
@@ -81,12 +91,16 @@ class MatchingController extends Controller
     }
 
 
+    //リクエスト許可
     public function permit(Request $request)
     {
         $id = $request->id;
         $result = Requests::find($id)->update($request->all());
         return redirect(route('list'));
     }
+
+
+    //リクエスト拒否
     public function reject(Request $request)
     {
         $id = $request->id;
@@ -102,6 +116,8 @@ class MatchingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+    //お気に入り
     public function favorite($like_user_id)
     {
         $user_id = Auth::user()->id;
@@ -121,6 +137,14 @@ class MatchingController extends Controller
             $query->delete();
             return redirect()->route('user_profile', $like_user_id);
         }
+    }
+
+
+    //ペアでのチャットルーム
+    public function chatroom($request_id, $user_id)
+    {
+
+        return view('chat.chatroom');
     }
 
     /**

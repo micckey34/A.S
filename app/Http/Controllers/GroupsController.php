@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Groups;
 use App\Models\Group_join;
 use App\Models\Group_message;
@@ -31,23 +32,31 @@ class GroupsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    //グループ作成処理
     public function store(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
             ['group_name' => 'require', 'information' => 'require',]
         );
+        //作成
         $result = Groups::create($request->all());
-
+        //作ったユーザーの加入させる
         $group = Groups::orderBy('created_at', 'desc')->first();
         $group_id = $group->id;
         $user_id = Auth::user()->id;
         Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
+        //最初のメッセージを送信（エラー防止）
         $id = $group_id;
         $group = Groups::find($id);
-        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
-        $messages = Group_message::where('Group_id', $group_id);
-        return view('chat.group_page', ['group' => $group], ['members' => $members], ['messages' => $messages]);
+        $message = '〜新しいグループが作成されました〜';
+        $text = Group_message::create(['user_id' => $user_id, 'group_id' => $group_id, 'message' => $message, 'created_at' => now()]);
+        //メンバー、メッセージを取得
+        $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
+        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
+        return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 
     /**
@@ -62,6 +71,7 @@ class GroupsController extends Controller
         return view('group.group_profile', ['group' => $group]);
     }
 
+    //グループ参加処理
     public function join(Request $data)
     {
         $group_id = $data->group_id;
@@ -69,9 +79,8 @@ class GroupsController extends Controller
         Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
         $id = $group_id;
         $group = Groups::find($id);
-        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
-        // $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
-        $messages = '';
+        $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
+        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
     /**
@@ -103,6 +112,8 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //グループ退会処理
     public function destroy($group_id)
     {
         $user_id = Auth::user()->id;
@@ -112,23 +123,31 @@ class GroupsController extends Controller
         return view('group.searchgroup');
     }
 
+
+    //チャットリストページ
     public function list()
     {
         $user_id = Auth::user()->id;
         $group = Group_join::join('groups', 'group_joins.group_id', '=', 'groups.id')->where('user_id', $user_id)->get();
-        $send = Requests::join('users', 'requests.user_id', '=', 'users.id')->where('user_id', $user_id)->get();
-        $receive = Requests::join('users', 'requests.destination_id', '=', 'users.id')->where('user_id', $user_id)->get();
+        $query = ['user_id' => $user_id, 'result' => 1];
+        $send = Requests::join('users', 'requests.user_id', '=', 'users.id')->where($query)->get();
+        $query2 = ['destination_id' => $user_id, 'result' => 1];
+        $receive = Requests::join('users', 'requests.destination_id', '=', 'users.id')->where($query2)->get();
         return view('chat.chat_list')->with(['groups' => $group, 'sends' => $send, 'receives' => $receive]);
     }
 
+
+    //グループ ホームページ
     public function group_page($id)
     {
         $group = Groups::find($id);
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $id)->get();
-        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
+        $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 
+
+    //グループチャット メッセージ
     public function message(Request $request)
     {
         $user_id = Auth::user()->id;
@@ -139,8 +158,7 @@ class GroupsController extends Controller
         $id = $group_id;
         $group = Groups::find($id);
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
-        // ddd($messages);
-        $members = Group_join::join('users', 'group_joins.user_id', '=', 'users.id')->where('group_id', $id)->get();
+        $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 }
