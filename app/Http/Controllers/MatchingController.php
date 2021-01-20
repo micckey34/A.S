@@ -48,7 +48,11 @@ class MatchingController extends Controller
 
     public function index()
     {
-        $request = Requests::get();
+        $user_id = Auth::user()->id;
+        $query = ['destination_id' => $user_id, 'result' => 0];
+        $data = Requests::select('requests.id', 'users.name', 'users.id as user_id')->join('users', 'requests.user_id', '=', 'users.id')->where($query);
+        $request = $data->get();
+        return view('dashboard', ['requests' => $request]);
     }
 
     /**
@@ -74,6 +78,21 @@ class MatchingController extends Controller
         $destination_id =  $request->destination_id;
         Requests::insert(['user_id' => $user_id, 'destination_id' => $destination_id, 'created_at' => now()]);
         return redirect()->route('user_profile', $destination_id);
+    }
+
+
+    public function permit(Request $request)
+    {
+        $id = $request->id;
+        $result = Requests::find($id)->update($request->all());
+        return redirect(route('list'));
+    }
+    public function reject(Request $request)
+    {
+        $id = $request->id;
+        $result = Requests::find($id)->update($request->all());
+        // ddd($result);
+        return redirect(route('dashboard'));
     }
 
     /**

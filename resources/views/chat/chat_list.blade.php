@@ -14,6 +14,14 @@
         </div>    
     @endforeach
     <h1>マッチングした相手</h1>
+    <p>リクエストを送った相手</p>
+    @foreach ($sends as $send)
+        <a href="">{{ $send->name }}</a>
+    @endforeach
+    <p>リクエストを受けた相手</p>
+    @foreach ($receives as $receive)
+        <a href="">{{ $receive->name }}</a>
+    @endforeach
    
 
 </x-app-layout>
