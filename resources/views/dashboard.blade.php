@@ -5,7 +5,6 @@
         </h2>
     </x-slot>
     <section class="home_section_news">
-
             @if ($requests == '[]')
             <label for="check" class="notice">☆新しい通知はございません</label>
             @else

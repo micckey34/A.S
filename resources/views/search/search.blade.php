@@ -28,9 +28,11 @@
         {{-- テスト --}}
         <div class="select_data_box">
         @foreach ($users as $user)
-            <div >
-                    <a href="{{ route('user_profile',$user->id) }}">
-                    <div class="select_data">
+        @if(Auth::id() == $user->id)
+        @else
+        <div >
+            <a href="{{ route('user_profile',$user->id) }}">
+                <div class="select_data">
                     <img src="{{ $user->profile_photo_url  }}" alt="" class="select_data_img">
                     <div >
                         <h1 class="username">{{ $user->name }}</h1>
@@ -41,9 +43,10 @@
                         <h1>女性</h1>
                         @endif
                     </div>
-                    </div>
-                    </a>
-            </div>
+                </div>
+            </a>
+        </div>
+        @endif
         @endforeach
     </section>
 

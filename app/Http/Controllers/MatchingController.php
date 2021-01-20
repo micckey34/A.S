@@ -121,12 +121,9 @@ class MatchingController extends Controller
     public function favorite($like_user_id)
     {
         $user_id = Auth::user()->id;
-
         $data = Likes::where('user_id', $user_id);
         $data = Likes::where('like_user_id', $like_user_id);
         $id = $data->get('id');
-        // ddd($id);
-
         if (!isset($id[0])) {
             Likes::create(['user_id' => $user_id, 'like_user_id' => $like_user_id, 'created_at' => now()]);
             return redirect()->route('user_profile', $like_user_id);
@@ -141,10 +138,17 @@ class MatchingController extends Controller
 
 
     //ペアでのチャットルーム
-    public function chatroom($request_id, $user_id)
+    public function chatroom($request_id)
     {
-
-        return view('chat.chatroom');
+        $user_id = Auth::user()->id;
+        $data = Requests::find($request_id);
+        // ddd($data);
+        if ($data->user_id == $user_id) {
+            $pair = User::find($data->destination_id);
+        } else if ($data->destination_id == $user_id) {
+            $pair = User::find($data->user_id);
+        };
+        return view('chat.chatroom')->with(['pair' => $pair]);
     }
 
     /**
