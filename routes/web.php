@@ -117,3 +117,8 @@ Route::post('/permit', 'App\Http\Controllers\MatchingController@permit')
 //リクエスト拒否
 Route::post('/reject', 'App\Http\Controllers\MatchingController@reject')
     ->name('reject');
+
+
+//個人チャット
+Route::get('/chatroom/{request_id}', 'App\Http\Controllers\MatchingController@chatroom')
+    ->name('chatroom');
