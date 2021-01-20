@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Groups;
 use App\Models\Group_join;
 use App\Models\Group_message;
+use App\Models\Requests;
 
 class GroupsController extends Controller
 {
@@ -115,7 +116,9 @@ class GroupsController extends Controller
     {
         $user_id = Auth::user()->id;
         $group = Group_join::join('groups', 'group_joins.group_id', '=', 'groups.id')->where('user_id', $user_id)->get();
-        return view('chat.chat_list', ['groups' => $group]);
+        $send = Requests::join('users', 'requests.user_id', '=', 'users.id')->where('user_id', $user_id)->get();
+        $receive = Requests::join('users', 'requests.destination_id', '=', 'users.id')->where('user_id', $user_id)->get();
+        return view('chat.chat_list')->with(['groups' => $group, 'sends' => $send, 'receives' => $receive]);
     }
 
     public function group_page($id)

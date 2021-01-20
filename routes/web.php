@@ -5,6 +5,8 @@ use app\Models\User;
 
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\MatchingController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +30,9 @@ Route::get('/', function () {
 
 
 //ホームページ
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\MatchingController@index')
+
+    ->name('dashboard');
 
 
 //個人検索トップ
@@ -100,6 +102,18 @@ Route::get('/user_profile/{like_user_id}', 'App\Http\Controllers\MatchingControl
 Route::get('/group_page/{id}', 'App\Http\Controllers\GroupsController@group_page')
     ->name('group_page');
 
+
 //グループチャット、メッセージ
 Route::post('/group_page', 'App\Http\Controllers\GroupsController@message')
     ->name('message');
+
+
+
+//リクエスト許可
+Route::post('/permit', 'App\Http\Controllers\MatchingController@permit')
+    ->name('permit');
+
+
+//リクエスト拒否
+Route::post('/reject', 'App\Http\Controllers\MatchingController@reject')
+    ->name('reject');
