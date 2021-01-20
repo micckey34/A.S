@@ -32,7 +32,7 @@ header{
 .content{
     width: 1000px;
     margin: auto;
-    margin-top: 160px;
+    margin-top: 140px;
 }
 
 .search_content{
@@ -42,7 +42,7 @@ header{
 }
 
 .home_section{
-    margin-top: 30px;
+    margin-top: 5px;
     background-color: rgba(255, 255, 255, 0.6);
     color: #555;
     text-align: center;
@@ -59,6 +59,7 @@ header{
     font-size: 18px;
     font-weight: bold;
     /* overflow: scroll; */
+    display: block;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -67,6 +68,7 @@ header{
 
 .section{
     min-height: 100vh;
+    display: block;
     background-color: rgba(255, 255, 255, 0.7);
     background-image: url(../image/backimg.png);
     background-size: contain;
@@ -89,10 +91,59 @@ header{
     text-decoration: underline;
 }
 
-.news_list{
-   font-size: 12px;
-   font-weight: bold;
-   color: #555;
+.notice{
+    background-color:#FFF7C8;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color:#E74854;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.n:hover{
+    font-size: 19px;
+}
+
+.check + .notice_list{
+    display: none;
+}
+
+.check:checked + .notice_list {
+  width: 100%;
+  display:block;
+  background-color: #FFF7C8;
+  font-size: 12px;
+  color:#555;
+}
+.check{
+  display:none;
+}
+
+.select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select_btn{
+    padding: 5px;
+    margin: 10px;
+    border-radius: 3px;
+    background-color: #ffffffb4;
+    box-shadow: 3px 3px 3px 0 #ddd;
+    color: #E74854;
+    font-weight: bold;
+}
+
+.b{
+    color: #555;
+}
+
+.select_btn:hover{
+    background-color: #ffee8c;
 }
 
 .profile{
@@ -332,13 +383,14 @@ background-color: rgba(81, 80, 82, 0.466);
     width: 250px;
     height: 180px;
     transform: rotate(-20deg);
-    margin: 0 8px 0 8px;
+    margin: 5px 8px 0 8px;
     border-radius: 20px;
-     box-shadow: 4px 4px 4px 0 rgb(206, 205, 205);
+    box-shadow: 4px 4px 4px 0 rgb(206, 205, 205);
 }
 
 .home_content_box{
     display: flex;
+    align-items: flex-start
 }
 
 .home_box{
@@ -357,6 +409,10 @@ background-color: rgba(81, 80, 82, 0.466);
     align-items: center;
 }
 
+.c2:hover{
+    margin-top: 0px;
+}
+
 .c3{
     background-image: url(../image/恋人.jpg);
     background-size: cover;
@@ -369,6 +425,10 @@ background-color: rgba(81, 80, 82, 0.466);
    align-items: center;
 }
 
+.c4:hover{
+    margin-top: 0px;
+}
+
 .c5{
     background-image: url(../image/ぐるーぷ.jpeg);
     background-size: cover;
@@ -379,6 +439,10 @@ background-color: rgba(81, 80, 82, 0.466);
    display: flex;
    justify-content: center;
    align-items: center;
+}
+
+.c6:hover{
+    margin-top: 0px;
 }
 
 
