@@ -7,5 +7,7 @@
 
     <section class="section">
 
+        <h1>{{ $pair->name }}とのチャットルーム</h1>
+
     </section>
 </x-app-layout>

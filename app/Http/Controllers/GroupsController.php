@@ -71,6 +71,7 @@ class GroupsController extends Controller
         return view('group.group_profile', ['group' => $group]);
     }
 
+
     //グループ参加処理
     public function join(Request $data)
     {
@@ -113,6 +114,7 @@ class GroupsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
     //グループ退会処理
     public function destroy($group_id)
     {
@@ -130,9 +132,10 @@ class GroupsController extends Controller
         $user_id = Auth::user()->id;
         $group = Group_join::join('groups', 'group_joins.group_id', '=', 'groups.id')->where('user_id', $user_id)->get();
         $query = ['user_id' => $user_id, 'result' => 1];
-        $send = Requests::join('users', 'requests.user_id', '=', 'users.id')->where($query)->get();
+        // $send = Requests::leftjoin('users', 'requests.user_id', '=', 'users.id')->where($query)->get();
+        $send = User::leftjoin('requests', 'users.id', '=', 'requests.destination_id')->where($query)->get();
         $query2 = ['destination_id' => $user_id, 'result' => 1];
-        $receive = Requests::join('users', 'requests.destination_id', '=', 'users.id')->where($query2)->get();
+        $receive = User::leftjoin('requests', 'users.id', '=', 'requests.user_id')->where($query2)->get();
         return view('chat.chat_list')->with(['groups' => $group, 'sends' => $send, 'receives' => $receive]);
     }
 

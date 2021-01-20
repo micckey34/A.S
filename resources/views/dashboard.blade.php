@@ -19,7 +19,7 @@
                     justify-content: space-around;
                 }
             </style>
-            @if ($requests == '')
+            @if ($requests == '[]')
             <p>新しい通知はございません</p>
             @else
             @foreach ($requests as $request)
