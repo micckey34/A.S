@@ -7,34 +7,40 @@
 
         <section class="home_section_news">
             <h1 class="chath1_red">{{ $group->group_name }}へようこそ！</h1>
-            <h2>参加メンバー</h2>
-            <div class="select_data_box">
-            @foreach ($members as $member)
-            <div class="select_data">
-            <p class="username">{{ $member->name }}</p>
-            <img src="{{ $member->profile_photo_url }}" alt="" class="select_data_img">
-            </div>
-            @endforeach
-            </div>
+            <div class="chat_style">
+                <div>
+                    <h2>参加メンバー</h2>
+                    <div class="chatmember">
+                        @foreach ($members as $member)
+                        <div class="select_data">
+                            <img src="{{ $member->profile_photo_url }}" alt="" class="chat_img">
+                            <p class="username">{{ $member->name }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
 
 
-            <h2>チャット</h2>
-            <div class="output">
-            @foreach ($messages as $message)
-                <p>{{ $message->name }}：{{ $message->message }}</p>
-            @endforeach
-            </div>
-            <form action="{{ route('message') }}" method="POST">
-                @csrf
-                <input type="hidden" name="group_id" value="{{ $group->id }}">
-                <textarea name="message" id="" cols="30" rows="10"></textarea>
-                <button type="submit">送信</button>
-            </form>
+                <div>
+                    <h2>チャット</h2>
+                    <div  class="output">
+                        @foreach ($messages as $message)
+                        <p>{{ $message->name }}：{{ $message->message }}</p>
+                        @endforeach
+                        <form action="{{ route('message') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="group_id" value="{{ $group->id }}">
+                            <textarea name="message" id="" cols="30" rows="3"></textarea>
+                            <button type="submit" class="chath1_red">送信</button>
+                        </form>
+                    </div>
+                 </div>
+        </div>
 
-            <form action="{{ route('groups.destroy',$group->id) }}" method="POST">
-                @method('delete')
-                @csrf
-                    <button type="submit">退会する</button>
+                <form action="{{ route('groups.destroy',$group->id) }}" method="POST">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="withdrawal">退会する</button>
                 </form>
         </section>
 </x-app-layout>

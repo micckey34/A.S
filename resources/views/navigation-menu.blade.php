@@ -23,7 +23,7 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('group.searchgroup') }}" :active="request()->routeIs('group.searchgroup')">
+                    <x-jet-nav-link href="{{ route('group_list') }}" :active="request()->routeIs('group.searchgroup')">
                         {{ __('グループを探す') }}
                     </x-jet-nav-link>
                 </div>
