@@ -9,7 +9,7 @@
             @if ($requests == '[]')
             <label for="check" class="notice">☆新しい通知はございません</label>
             @else
-            <label for="check" class="notice n">★新しいお知らせが届いています👇</label>
+            <label for="check" class="notice"><p class="n">★新しいお知らせが届いています👇</p></label>
             <input type="checkbox" id="check" class="check">
             <div class="notice_list">
             @foreach ($requests as $request)

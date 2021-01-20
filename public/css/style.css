@@ -445,4 +445,44 @@ background-color: rgba(81, 80, 82, 0.466);
     margin-top: 0px;
 }
 
+.group_chat_text{
+    display: flex;
+    align-items: center;
+}
 
+.group_chat_text img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 5px 30px 5px 0px;
+}
+
+/* 吹き出しコピペ */
+.balloon1-left {
+  position: relative;
+  display: inline-block;
+  /* margin: 1.5em 0 1.5em 15px; */
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 3px;
+}
+
+.balloon1-left:before {
+  content: "";
+  position: absolute;
+  top: 65%;
+  left: -20px;
+  margin-top: -15px;
+  border: 10px solid transparent;
+  border-right: 10px solid #e0edff;
+}
+
+.balloon1-left p {
+  margin: 0;
+  padding: 0;
+}

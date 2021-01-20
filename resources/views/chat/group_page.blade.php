@@ -25,7 +25,12 @@
                     <h2>チャット</h2>
                     <div  class="output">
                         @foreach ($messages as $message)
-                        <p>{{ $message->name }}：{{ $message->message }}</p>
+                        <div class="group_chat_text">
+                            <img src="{{ Storage::url($message->profile_photo_path) }}" alt="" width="30px" height="30px">
+                            <div class="balloon1-left">
+                                <p>{{ $message->name }}：{{ $message->message }}</p>
+                            </div>
+                        </div>
                         @endforeach
                         <form action="{{ route('message') }}" method="POST">
                             @csrf
