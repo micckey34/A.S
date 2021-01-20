@@ -5,31 +5,21 @@
         </h2>
     </x-slot>
     <section class="home_section_news">
-        <div class="info">
-            <style>
-                .info{
-                    height: 120px;
-                    margin: 2rem;
-                    padding:2rem;
-                    border: 2px solid yellow;
-                }
-                .select{
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-around;
-                }
-            </style>
-            @if ($requests == '')
-            <p>新しい通知はございません</p>
+
+            @if ($requests == '[]')
+            <label for="check" class="notice">☆新しい通知はございません</label>
             @else
+            <label for="check" class="notice n">★新しいお知らせが届いています👇</label>
+            <input type="checkbox" id="check" class="check">
+            <div class="notice_list">
             @foreach ($requests as $request)
-            <p>{{ $request->name }}さんからリクエストが来ています！</p>
             <div class="select">
+            <p>{{ $request->name }}さんからリクエストが来ています！</p>
                 <form action="{{ route('permit') }}" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="{{ $request->id }}">
                     <input type="hidden" name="result" value="1">
-                    <button>受け入れる</button>
+                    <button class="select_btn">受け入れる</button>
                 </form>
                 <form action="{{ route('reject') }}" method="POST">
                     @csrf
@@ -37,12 +27,13 @@
                     {{-- <input type="text" name="id" value="{{ $request->id }}">
                     <input type="text" name="id" value="{{ $request->user_id }}"> --}}
                     <input type="hidden" name="result" value="2">
-                    <button>断る</button>
+                    <button class="select_btn b">断る</button>
                 </form>
             </div>
             @endforeach
+            </div>
             @endif
-        </div>
+
         <div class="home_box">
             <div class="home_content_box">
                 <div class="home_content c1"></div>
@@ -54,6 +45,7 @@
                 <div class="home_content c5"></div>
                 <a href="{{ route('group_list') }}"><div class="home_content c6"><p>仲間を探す</p></div></a>
             </div>
+
         </div>
     </section>
 </x-app-layout>
