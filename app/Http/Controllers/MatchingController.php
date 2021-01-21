@@ -42,7 +42,7 @@ class MatchingController extends Controller
     public function friendsearch()
     {
         $sex = Auth::user()->sex;
-        $users = User::where('sex', $sex)->get();
+        $users = User::where('sex', $sex)->inrandomorder()->get();
         return view('search.search', ['users' => $users]);
     }
 
@@ -57,7 +57,7 @@ class MatchingController extends Controller
         } else {
             $sex = 1;
         };
-        $users = User::where('sex', $sex)->get();
+        $users = User::where('sex', $sex)->inrandomorder()->get();
         return view('search.search', ['users' => $users]);
     }
 
@@ -90,7 +90,13 @@ class MatchingController extends Controller
     {
         $user_id = Auth::user()->id;
         $destination_id =  $request->destination_id;
-        Requests::insert(['user_id' => $user_id, 'destination_id' => $destination_id, 'created_at' => now()]);
+        $query = ['user_id' => $user_id, 'destination_id' => $destination_id];
+        $check = Requests::where($query)->get();
+        if ($check == '[]') {
+            Requests::insert(['user_id' => $user_id, 'destination_id' => $destination_id, 'created_at' => now()]);
+        } else {
+            echo ('すでに送信しています');
+        }
         return redirect()->route('search.search');
     }
 
@@ -157,7 +163,6 @@ class MatchingController extends Controller
     //ペアチャット メッセージ
     public function message(Request $request)
     {
-        // ddd($request);
         $result = Chat::create($request->all());
         return redirect(route('chatroom', $request->chat_id));
     }

@@ -55,7 +55,7 @@ class GroupsController extends Controller
         $text = Group_message::create(['user_id' => $user_id, 'group_id' => $group_id, 'message' => $message, 'created_at' => now()]);
         //メンバー、メッセージを取得
         $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
-        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
+        $messages = User::join('group_messages', 'users.id', '=', 'group_messages.user_id')->where('Group_id', $group_id)->get();
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 
@@ -67,11 +67,15 @@ class GroupsController extends Controller
     {
         $group_id = $data->group_id;
         $user_id = Auth::user()->id;
-        Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
+        $query = ['user_id' => $user_id, 'group_id' => $group_id];
+        $check = Group_join::where($query)->get();
+        if ($check == '[]') {
+            Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
+        }
         $id = $group_id;
         $group = Groups::find($id);
         $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
-        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
+        $messages = User::join('group_messages', 'users.id', '=', 'group_messages.user_id')->where('Group_id', $group_id)->get();
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 
@@ -108,7 +112,7 @@ class GroupsController extends Controller
     public function group_page($id)
     {
         $group = Groups::find($id);
-        $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $id)->get();
+        $messages = User::join('group_messages', 'users.id', '=', 'group_messages.user_id')->where('Group_id', $id)->get();
         $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }

@@ -18,7 +18,7 @@
                 @csrf
                 <input type="hidden" name="chat_id" value="{{ $room->id }}">
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                <textarea type="text" name="message" ></textarea>
+                <textarea type="text" name="message" required></textarea>
                 <button type="submit">送信</button>
             </form>
         </div>
