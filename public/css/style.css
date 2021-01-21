@@ -177,6 +177,25 @@ header{
     align-items: flex-end;
 }
 
+.private_chat_select{
+
+    padding-top: 50px;
+    font-size: 12px;
+    color: #555;
+    display: flex;
+    align-items: flex-end;
+}
+
+.private_chat_box{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.private{
+    width: 50%;
+}
+
 .select_data_img{
     width: 160px;
     height: 160px;
@@ -264,6 +283,25 @@ header{
     background-color: #ffee8c;
 }
 
+.like_button_after{
+    background-color:#E74854;
+    width: 180px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 0 #ddd;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like_button_after:hover{
+    background-color: #ffee8c;
+}
+
 .group_data{
     margin: 20px;
     width: 200px;
@@ -319,6 +357,13 @@ header{
     font-weight: bold;
 }
 
+.chath2_red{
+    padding: 20px;
+    color:#E74854;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 .chatmember{
     width: 200px;
     height: 60vh;
@@ -335,12 +380,13 @@ header{
 }
 
 .output{
-    height: 60vh;
+    height: 50vh;
     margin: 10px;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end; */
     overflow: scroll;
+
 }
 
 /* スクロールの幅の設定 */
@@ -394,7 +440,11 @@ background-color: rgba(81, 80, 82, 0.466);
 }
 
 .home_box{
-    margin-top: 50px;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .c1{
@@ -447,7 +497,7 @@ background-color: rgba(81, 80, 82, 0.466);
 
 .group_chat_text{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .group_chat_text img{
@@ -462,7 +512,7 @@ background-color: rgba(81, 80, 82, 0.466);
 .balloon1-left {
   position: relative;
   display: inline-block;
-  /* margin: 1.5em 0 1.5em 15px; */
+  margin-top: 5px;
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
@@ -485,4 +535,20 @@ background-color: rgba(81, 80, 82, 0.466);
 .balloon1-left p {
   margin: 0;
   padding: 0;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.private_chat{
+    display: flex;
+    justify-content: space-around;
+}
+
+.private_chat_comment{
+    margin: 50px 20px 0px 20px;
+    width: 400px;
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-size: 12px;
 }
