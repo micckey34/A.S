@@ -42,9 +42,9 @@
             <button type="submit" class="like_button">Chat Request</button>
             </form>
             @if($like == '[]')
-                <a href="{{ route('favorite',$user->id) }}" class="like_button">気になる</a>
+                <a href="{{ route('favorite',$user->id) }}" class="like_button">favorite</a>
             @else
-                <a href="{{ route('favorite',$user->id) }}" class="like_button">気にならない</a>
+                <a href="{{ route('favorite',$user->id) }}" class="like_button_after">favorite</a>
             @endif
 
         </div>

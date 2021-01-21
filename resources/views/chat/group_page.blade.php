@@ -8,7 +8,7 @@
         <section class="home_section_news">
             <h1 class="chath1_red">{{ $group->group_name }}へようこそ！</h1>
             <div class="chat_style">
-                <div>
+                <div class="private">
                     <h2>参加メンバー</h2>
                     <div class="chatmember">
                         @foreach ($members as $member)
@@ -21,24 +21,26 @@
                 </div>
 
 
-                <div>
+                <div class="private">
                     <h2>チャット</h2>
-                    <div  class="output">
-                        @foreach ($messages as $message)
-                        <div class="group_chat_text">
-                            <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
-                            <div class="balloon1-left">
-                                <p>{{ $message->name }}：{{ $message->message }}</p>
+                    <div>
+                        <div  class="output">
+                            @foreach ($messages as $message)
+                            <div class="group_chat_text">
+                                <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
+                                <div class="balloon1-left">
+                                    <p>{{ $message->name }}：{{ $message->message }}</p>
+                                </div>
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
-                        <form action="{{ route('message') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="group_id" value="{{ $group->id }}">
-                            <textarea name="message" id="" cols="30" rows="3"></textarea>
-                            <button type="submit" class="chath1_red">送信</button>
-                        </form>
-                    </div>
+                            <form action="{{ route('message') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                <textarea name="message" id="" cols="30" rows="3"></textarea>
+                                <button type="submit" class="chath1_red">送信</button>
+                            </form>
+                        </div>
                  </div>
         </div>
 
