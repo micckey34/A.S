@@ -77,7 +77,10 @@ class MatchingController extends Controller
     public function profile($id)
     {
         $user = User::find($id);
-        return view('search.user_profile', ['user' => $user]);
+        $user_id = Auth::user()->id;
+        $query = ['user_id' => $user_id, 'like_user_id' => $user->id];
+        $like = Likes::where($query)->get();
+        return view('search.user_profile', with(['user' => $user, 'like' => $like]));
     }
 
 
@@ -140,18 +143,12 @@ class MatchingController extends Controller
     {
         $user_id = Auth::user()->id;
         $data = Requests::find($request_id);
-        // ddd($data);
         if ($data->user_id == $user_id) {
             $pair = User::find($data->destination_id);
         } else if ($data->destination_id == $user_id) {
             $pair = User::find($data->user_id);
         };
-        // $messages = Chat::leftjoin('users', 'chats.user_id', '=', 'users.id')->where('chat_id', $request_id)->get();
-        // $messages = Chat::where('chat_id', $request_id)->get();
-
         $messages = User::leftjoin('chats', 'users.id', '=', 'chats.user_id')->where('chat_id', $request_id)->get();
-
-        // ddd($messages);
         return view('chat.chatroom')->with(['pair' => $pair, 'room' => $data, 'messages' => $messages]);
     }
 
