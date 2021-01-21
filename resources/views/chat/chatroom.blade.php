@@ -4,8 +4,7 @@
             {{ __('チャットルーム') }}
         </h2>
     </x-slot>
-
-   <section class="home_section_news">
+    <section class="home_section_news">
         <h1 class="chath2_red">{{ $pair->name }}とのチャットルーム</h1>
         <div class="chat_style">
             <div class="private">
@@ -15,10 +14,9 @@
                         <p class="userdata">{{ $pair->name }}</p>
                         <p class="userdata">{{ $pair->age }}歳</p>
                     </div>
-                 </div>
+                </div>
                 <p class="private_chat_comment">{{ $pair->profile }}</p>
             </div>
-
             <div class="private">
                 <div  class="output">
                     @foreach ($messages as $message)
@@ -32,17 +30,17 @@
                         </div>
                     </div>
                     @else
-                     <div>
-                         <div class="left">
-                             <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
-                             <div class="balloon1-left">
-                                 <p>{{ $message->name }}：{{ $message->message }}</p>
-                             </div>
+                    <div>
+                        <div class="left">
+                            <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
+                            <div class="balloon1-left">
+                                <p>{{ $message->message }}</p>
+                            </div>
                         </div>
                     </div>
                     @endif
                     @endforeach
-                 </div>
+                </div>
                     <form action="{{ route('chat_message') }}" method="POST">
                     @csrf
                     <input type="hidden" name="chat_id" value="{{ $room->id }}">
@@ -52,9 +50,5 @@
                     </form>
             </div>
         </div>
-
-     </section>
-
-
-
+    </section>
 </x-app-layout>
