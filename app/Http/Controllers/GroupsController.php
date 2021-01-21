@@ -15,23 +15,23 @@ use App\Models\Requests;
 
 class GroupsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //グループ一覧画面
     public function index()
     {
         $groups = Groups::get();
         return view('group.group_list', ['groups' => $groups]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+
+    //グループ詳細画面
+    public function show($id)
+    {
+        $group = Groups::find($id);
+        return view('group.group_profile', ['group' => $group]);
+    }
+
+
 
 
     //グループ作成処理
@@ -43,7 +43,7 @@ class GroupsController extends Controller
         );
         //作成
         $result = Groups::create($request->all());
-        //作ったユーザーの加入させる
+        //作ったユーザーの加入
         $group = Groups::orderBy('created_at', 'desc')->first();
         $group_id = $group->id;
         $user_id = Auth::user()->id;
@@ -59,17 +59,7 @@ class GroupsController extends Controller
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $group = Groups::find($id);
-        return view('group.group_profile', ['group' => $group]);
-    }
+
 
 
     //グループ参加処理
@@ -84,35 +74,8 @@ class GroupsController extends Controller
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();
         return view('chat.group_page')->with(['group' => $group, 'members' => $members, 'messages' => $messages]);
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
 
     //グループ退会処理
@@ -126,18 +89,19 @@ class GroupsController extends Controller
     }
 
 
+
     //チャットリストページ
     public function list()
     {
         $user_id = Auth::user()->id;
         $group = Group_join::join('groups', 'group_joins.group_id', '=', 'groups.id')->where('user_id', $user_id)->get();
         $query = ['user_id' => $user_id, 'result' => 1];
-        // $send = Requests::leftjoin('users', 'requests.user_id', '=', 'users.id')->where($query)->get();
         $send = User::leftjoin('requests', 'users.id', '=', 'requests.destination_id')->where($query)->get();
         $query2 = ['destination_id' => $user_id, 'result' => 1];
         $receive = User::leftjoin('requests', 'users.id', '=', 'requests.user_id')->where($query2)->get();
         return view('chat.chat_list')->with(['groups' => $group, 'sends' => $send, 'receives' => $receive]);
     }
+
 
 
     //グループ ホームページ
@@ -150,6 +114,8 @@ class GroupsController extends Controller
     }
 
 
+
+
     //グループチャット メッセージ
     public function message(Request $request)
     {
@@ -157,7 +123,6 @@ class GroupsController extends Controller
         $group_id = $request->group_id;
         $message = $request->message;
         $text = Group_message::create(['user_id' => $user_id, 'group_id' => $group_id, 'message' => $message, 'created_at' => now()]);
-
         $id = $group_id;
         $group = Groups::find($id);
         $messages = Group_message::join('users', 'Group_messages.user_id', '=', 'users.id')->where('Group_id', $group_id)->get();

@@ -17,7 +17,7 @@
             </x-jet-nav-link>
         </div>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ route('favorite_users') }}" :active="request()->routeIs('favorite_users')">
+            <x-jet-nav-link href="{{ route('favorite_search') }}" :active="request()->routeIs('favorite_search')">
                 {{ __('お気に入りのユーザー') }}
             </x-jet-nav-link>
         </div>
@@ -25,7 +25,6 @@
 
 
          <section class="home_section_news">
-        {{-- テスト --}}
         <div class="select_data_box">
         @foreach ($users as $user)
         @if(Auth::id() == $user->id)
@@ -49,6 +48,4 @@
         @endif
         @endforeach
     </section>
-
-    {{-- テスト --}}
 </x-app-layout>

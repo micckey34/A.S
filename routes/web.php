@@ -61,10 +61,9 @@ Route::get('/lover_search', 'App\Http\Controllers\MatchingController@loversearch
     ->name('lover_search');
 
 
-//お気に入りユーザー
-Route::middleware(['auth:sanctum', 'verified'])->get('/favorite_users', function () {
-    return view('search.favorite_users');
-})->name('favorite_users');
+//恋人検索
+Route::get('/favorite_search', 'App\Http\Controllers\MatchingController@favoritesearch')
+    ->name('favorite_search');
 
 
 //プロフィール詳細画面
@@ -94,7 +93,7 @@ Route::post('/group_profile', 'App\Http\Controllers\GroupsController@join')
 
 
 //いいね機能
-Route::get('/user_profile/{like_user_id}', 'App\Http\Controllers\MatchingController@favorite')
+Route::get('/{like_user_id}', 'App\Http\Controllers\MatchingController@favorite')
     ->name('favorite');
 
 
@@ -122,3 +121,8 @@ Route::post('/reject', 'App\Http\Controllers\MatchingController@reject')
 //個人チャット
 Route::get('/chatroom/{request_id}', 'App\Http\Controllers\MatchingController@chatroom')
     ->name('chatroom');
+
+
+//個人チャット メッセージ
+Route::post('/chatroom', 'App\Http\Controllers\MatchingController@message')
+    ->name('chat_message');
