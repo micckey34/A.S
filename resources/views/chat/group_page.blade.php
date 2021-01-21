@@ -11,10 +11,12 @@
                     <h2>参加メンバー</h2>
                     <div class="chatmember">
                         @foreach ($members as $member)
-                        <div class="select_data">
-                            <img src="{{ $member->profile_photo_url }}" alt="" class="chat_img">
-                            <p class="username">{{ $member->name }}</p>
-                        </div>
+                        <a href="{{ route('user_profile',$member->id) }}">
+                            <div class="select_data">
+                                <img src="{{ $member->profile_photo_url }}" alt="" class="chat_img">
+                                <p class="username">{{ $member->name }}</p>
+                            </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>
@@ -23,21 +25,24 @@
                     <div>
                         <div  class="output">
                             @foreach ($messages as $message)
-                             @if($message->user_id == Auth::id())
+                            @if($message->user_id == Auth::id())
                             <div>
                                 <div class="right">
                                     <div class="balloon1-right">
                                         <p>{{ $message->message }}</p>
-                                       </div>
-                                       <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
-                               </div>
+                                    </div>
+                                    <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
                             </div>
-                              @else
+                            </div>
+                            @else
                             <div>
                                 <div class="left">
-                                    <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
+                                    <div class="jono">
+                                        <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
+                                        <p>{{ $message->name }}</p>
+                                    </div>
                                     <div class="balloon1-left">
-                                        <p>{{ $message->name }}：{{ $message->message }}</p>
+                                        <p>{{ $message->message }}</p>
                                     </div>
                                 </div>
                             </div>

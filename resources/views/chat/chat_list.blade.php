@@ -4,10 +4,8 @@
             {{ __('チャットリスト') }}
         </h2>
     </x-slot>
-
     <section class="section">
-
-    <h1 class="chath2_red">参加中のグループ</h1>
+    <h1 class="chath2_red">参加中のコミュニティ</h1>
     <div class="select_data_box">
         @foreach ($groups as $group)
             <a href="{{ route('group_page',$group->id) }}" class="group_data">
@@ -16,7 +14,6 @@
         @endforeach
     </div>
     <h1 class="chath2_red">マッチングした相手</h1>
-
     <div class="private_chat">
         <div class="private">
             <p>リクエストを送った相手</p>
@@ -51,11 +48,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
 </x-app-layout>

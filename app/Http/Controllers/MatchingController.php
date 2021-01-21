@@ -67,8 +67,8 @@ class MatchingController extends Controller
     public function favoritesearch()
     {
         $user_id = Auth::user()->id;
-        $users = User::join('likes', 'users.id', '=', 'likes.like_user_id')->where('user_id', $user_id)->get();
-        return view('search.search', ['users' => $users]);
+        $users = User::leftjoin('likes', 'users.id', '=', 'likes.like_user_id')->where('user_id', $user_id)->get();
+        return view('search.favoritesearch', ['users' => $users]);
     }
 
 
@@ -96,7 +96,8 @@ class MatchingController extends Controller
             Requests::insert(['user_id' => $user_id, 'destination_id' => $destination_id, 'created_at' => now()]);
             return redirect()->route('search.search');
         } else {
-            echo ('すでに送信しています');
+            $user = User::where('id', $destination_id)->get();
+            return view('search.failure', ['user' => $user]);
         }
     }
 

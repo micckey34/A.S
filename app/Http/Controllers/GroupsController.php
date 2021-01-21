@@ -119,7 +119,6 @@ class GroupsController extends Controller
 
 
 
-
     //グループチャット メッセージ
     public function message(Request $request)
     {

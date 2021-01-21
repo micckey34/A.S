@@ -1,11 +1,11 @@
-body{
+body {
     background-color: #FFFEE8;
     width: 1000px;
     margin: auto;
     color: #555;
 }
 
-.login{
+.login {
     padding: 0 110px 0 110px;
     background-color: #FFF;
     height: 60px;
@@ -17,27 +17,27 @@ body{
     border-bottom: solid 2px #ddd;
 }
 
-.login a{
+.login a {
     color: #555;
     font-size: 14px;
     margin: 20px;
 }
 
-.summary{
+.summary {
     padding: 30px 110px 0 110px;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
 }
 
-.top_register_btn{
+.top_register_btn {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     font-weight: bold;
 }
 
-.text_red{
+.text_red {
     color: #E74854;
 }
 
@@ -45,17 +45,17 @@ h1 {
     margin-bottom: 30px;
 }
 
-.size18{
+.size18 {
     font-size: 18px;
     font-weight: bold;
 }
 
-.btn{
+.btn {
     display: flex;
     justify-content: space-around;
 }
 
-.size24{
+.size24 {
     background-color: #FFF7C8;
     width: 180px;
     height: 50px;
@@ -69,116 +69,121 @@ h1 {
     align-items: center;
 }
 
-.size24:hover{
+.size24:hover {
     background-color: #ffee8c;
 }
 
-.secction_title{
+.secction_title {
     padding: 20px 0 30px 0;
 }
 
-.subtitle{
+.subtitle {
     font-weight: bold;
     padding-bottom: 10px;
 }
 
-.size12{
+.size12 {
     padding: 2px;
     font-size: 12px;
 }
 
-.text{
+.text {
     padding-top: 10px;
 }
 
-.sarch_box{
+.sarch_box {
     display: flex;
     justify-content: space-around;
-    padding-bottom:40px ;
+    padding-bottom: 40px;
 }
 
-.sarch{
+.sarch {
     width: 185px;
     height: 40px;
     background-color: #FFF7C8;
     box-shadow: 3px 3px 3px 0 #ddd;
     border-radius: 8px;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     color: #E74854;
 }
 
-.top_section{
+.top_section {
     padding: 0 80px 0 80px;
     background-image: url(../image/backimg.png);
     background-size: cover;
 }
 
+
 /* プロフィール登録セクション */
-.profile_section{
+
+.profile_section {
     background-color: #FFF;
     padding: 0 80px 40px 80px;
 }
 
-.profile_point{
+.profile_point {
     display: flex;
     justify-content: space-between;
 }
 
-.profile_section p{
+.profile_section p {
     font-size: 12px;
 }
 
-.profile_photo{
+.profile_photo {
     display: flex;
     align-items: flex-end;
 }
 
-.profile_text1{
+.profile_text1 {
     padding-left: 20px;
     font-weight: bold;
 }
-.profile_text2{
+
+.profile_text2 {
     padding: 20px 40px 20px 10px;
     font-weight: bold;
 }
-.profile_img{
+
+.profile_img {
     padding: 10px;
 }
-.profile_text{
+
+.profile_text {
     padding: 10px;
     font-weight: bold;
 }
 
-.profile_explain{
+.profile_explain {
     background-color: #FFF7C8;
     border-radius: 8px;
     padding: 20px 20px 20px 20px;
 }
 
-.explain_box{
+.explain_box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+
 /* 検索の説明セクション */
-.sarch_section{
+
+.sarch_section {
     background-color: #FFF;
     height: 400px;
     padding-left: 80px;
     position: relative;
-
 }
 
-
-.sarch_section p{
+.sarch_section p {
     font-size: 12px;
 }
 
-.sarch_section_box{
+.sarch_section_box {
     position: relative;
     position: absolute;
     bottom: 0px;
@@ -187,11 +192,11 @@ h1 {
     justify-content: space-between;
 }
 
-.sarch_text{
+.sarch_text {
     padding-bottom: 40px;
 }
 
-.backff7{
+.backff7 {
     background-color: #FFF7C8;
     width: 850px;
     height: 180px;
@@ -201,38 +206,38 @@ h1 {
     left: 0px;
 }
 
-.sarch_img1{
-   position: absolute;
-   top: 20px;
-   left: 250px;
+.sarch_img1 {
+    position: absolute;
+    top: 20px;
+    left: 250px;
 }
 
-.sarch_img2{
-   position: absolute;
-   top: 20px;
-   left: 450px;
+.sarch_img2 {
+    position: absolute;
+    top: 20px;
+    left: 450px;
 }
 
-.sarch_img3{
-   position: absolute;
-   top: 20px;
-   left: 650px;
+.sarch_img3 {
+    position: absolute;
+    top: 20px;
+    left: 650px;
 }
 
-.chat_section{
+.chat_section {
     margin: 30px 100px 40px 100px;
     padding: 30px 10px 40px 10px;
     background-color: #FFF;
     font-size: 12px;
 }
 
-.chat_text_box{
+.chat_text_box {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.chat_text{
+.chat_text {
     width: 440px;
     height: 105px;
     margin: 20px;
@@ -242,7 +247,7 @@ h1 {
     box-shadow: 0 3px 4px 0 #999;
 }
 
-.circle{
+.circle {
     background-color: #FFF7C8;
     width: 150px;
     height: 150px;
@@ -253,23 +258,21 @@ h1 {
     align-items: center;
 }
 
-.circle_text{
+.circle_text {
     color: #E74854;
     font-weight: bold;
     text-align: center;
 }
 
-.fin_text{
+.fin_text {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-footer{
+footer {
     margin-top: 100px;
     font-size: 9px;
     font-weight: bold;
     text-align: center;
 }
-
-
