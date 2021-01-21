@@ -16,14 +16,12 @@
             </x-jet-nav-link>
         </div>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-jet-nav-link href="{{ route('favorite_users') }}" :active="request()->routeIs('favorite_users')">
+            <x-jet-nav-link href="{{ route('favorite_search') }}" :active="request()->routeIs('favorite_search')">
                 {{ __('お気に入りのユーザー') }}
             </x-jet-nav-link>
         </div>
     </x-slot>
-
   <section class="section">
-        {{-- テスト --}}
         <div class="select_data">
             <img src="{{ $user->profile_photo_url  }}" alt="" width="300px" class="user_img">
             <div>
@@ -37,18 +35,20 @@
         </div>
         <h4 class="comment">{{ $user->profile }}</h4>
        </div>
-
         <div class="favorite_btn">
             <form action="{{ route('matching.store') }}" method="POST">
             @csrf
             <input type="hidden" value="{{ $user->id }}" name="destination_id">
             <button type="submit" class="like_button">Chat Request</button>
             </form>
+            @if($like == '[]')
+                <a href="{{ route('favorite',$user->id) }}" class="like_button">気になる</a>
+            @else
+                <a href="{{ route('favorite',$user->id) }}" class="like_button">気にならない</a>
+            @endif
 
-            <a href="{{ route('favorite',$user->id) }}" class="like_button">気になる</a>
         </div>
     </section>
-
 </x-app-layout>
 
 
