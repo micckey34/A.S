@@ -67,7 +67,11 @@ class GroupsController extends Controller
     {
         $group_id = $data->group_id;
         $user_id = Auth::user()->id;
-        Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
+        $query = ['user_id' => $user_id, 'group_id' => $group_id];
+        $check = Group_join::where($query)->get();
+        if ($check == '[]') {
+            Group_join::insert(['user_id' => $user_id, 'group_id' => $group_id, 'created_at' => now()]);
+        }
         $id = $group_id;
         $group = Groups::find($id);
         $members = User::join('group_joins', 'users.id', '=', 'group_joins.user_id')->where('group_id', $id)->get();
