@@ -25,7 +25,7 @@
                     <div class="group_chat_text">
                         <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
                         <div class="balloon1-left">
-                            <p>{{ $message->name }}：{{ $message->message }}</p>
+                            <p>{{ $message->message }}</p>
                         </div>
                     </div>
                     @endforeach

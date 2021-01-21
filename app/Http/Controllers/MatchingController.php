@@ -94,10 +94,10 @@ class MatchingController extends Controller
         $check = Requests::where($query)->get();
         if ($check == '[]') {
             Requests::insert(['user_id' => $user_id, 'destination_id' => $destination_id, 'created_at' => now()]);
+            return redirect()->route('search.search');
         } else {
             echo ('すでに送信しています');
         }
-        return redirect()->route('search.search');
     }
 
 

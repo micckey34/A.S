@@ -31,19 +31,19 @@
                             </div>
                             @endforeach
                         </div>
-                            <form action="{{ route('message') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                <textarea name="message" id="" cols="30" rows="3" required></textarea>
-                                <button type="submit" class="chath1_red">送信</button>
-                            </form>
-                        </div>
-                 </div>
-        </div>
-                <form action="{{ route('groups.destroy',$group->id) }}" method="POST">
-                    @method('delete')
-                    @csrf
-                    <button type="submit" class="withdrawal">退会する</button>
-                </form>
+                        <form action="{{ route('message') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="group_id" value="{{ $group->id }}">
+                            <textarea name="message" id="" cols="30" rows="3" required></textarea>
+                            <button type="submit" class="chath1_red">送信</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <form action="{{ route('groups.destroy',$group->id) }}" method="POST">
+                @method('delete')
+                @csrf
+                <button type="submit" class="withdrawal">退会する</button>
+            </form>
         </section>
 </x-app-layout>
