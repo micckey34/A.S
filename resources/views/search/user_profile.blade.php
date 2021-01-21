@@ -25,12 +25,12 @@
         <div class="select_data">
             <img src="{{ $user->profile_photo_url  }}" alt="" width="300px" class="user_img">
             <div>
-            <h1>名前：{{ $user->name }}</h1>
-            <h2>年齢：{{ $user->age }}歳</h2>
+            <h1 class="userdata">名前：{{ $user->name }}</h1>
+            <h2 class="userdata">年齢：{{ $user->age }}歳</h2>
             @if ($user->sex == 1)
-            <h3>性別：男性</h3>
+            <h3 class="userdata">性別：男性</h3>
             @elseif($user->sex == 2)
-            <h3>性別：女性</h3>
+            <h3 class="userdata">性別：女性</h3>
             @endif
         </div>
         <h4 class="comment">{{ $user->profile }}</h4>

@@ -23,12 +23,25 @@
                     <div>
                         <div  class="output">
                             @foreach ($messages as $message)
-                            <div class="group_chat_text">
-                                <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
-                                <div class="balloon1-left">
-                                    <p>{{ $message->name }}：{{ $message->message }}</p>
+                             @if($message->user_id == Auth::id())
+                            <div>
+                                <div class="right">
+                                    <div class="balloon1-right">
+                                        <p>{{ $message->message }}</p>
+                                       </div>
+                                       <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
+                               </div>
+                            </div>
+                              @else
+                            <div>
+                                <div class="left">
+                                    <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
+                                    <div class="balloon1-left">
+                                        <p>{{ $message->name }}：{{ $message->message }}</p>
+                                    </div>
                                 </div>
                             </div>
+                            @endif
                             @endforeach
                         </div>
                             <form action="{{ route('message') }}" method="POST">

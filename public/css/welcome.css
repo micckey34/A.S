@@ -103,6 +103,11 @@ h1 {
     background-color: #FFF7C8;
     box-shadow: 3px 3px 3px 0 #ddd;
     border-radius: 8px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #E74854;
 }
 
 .top_section{

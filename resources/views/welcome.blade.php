@@ -24,7 +24,7 @@
                 <img src="image/machibitologo.png" alt="" width="330px">
                 <div>
                     <h1 class="text_red size18">Machibitoはあなたの大切な待ち人を見つけるための<br>
-                        マッチングアプリです</h1>
+                        福岡県限定マッチングアプリです</h1>
                     <div class="top_register_btn">
                         <p class="text_red">安心の登録無料♪</p>
                         <div class="btn">
@@ -47,10 +47,10 @@
             <h3 class="size18 secction_title" >今注目の検索ワード🔍</h3>
             <div class="sarch_box">
                 {{-- 上位検索ワードを表示 --}}
-                <div class="sarch"></div>
-                <div class="sarch"></div>
-                <div class="sarch"></div>
-                <div class="sarch"></div>
+                <div class="sarch">恋人探し</div>
+                <div class="sarch">友人探し</div>
+                <div class="sarch">仲間探し</div>
+                <div class="sarch">福岡</div>
             </div>
         </section>
         <section class="profile_section">

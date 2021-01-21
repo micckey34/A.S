@@ -247,7 +247,7 @@ header{
 .comment{
     margin: auto;
     width: 400px;
-    text-align: left;
+    text-align: center;
     white-space: pre-wrap;
     overflow-wrap: break-word;
 }
@@ -386,6 +386,8 @@ header{
     flex-direction: column;
     justify-content: flex-end; */
     overflow: scroll;
+    text-align: left;
+
 
 }
 
@@ -505,7 +507,7 @@ background-color: rgba(81, 80, 82, 0.466);
     height: 30px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 5px 30px 5px 0px;
+    margin: 5px 30px 5px 30px;
 }
 
 /* 吹き出しコピペ */
@@ -538,6 +540,36 @@ background-color: rgba(81, 80, 82, 0.466);
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
+/* 吹き出しコピペ */
+.balloon1-right {
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 3px;
+}
+
+.balloon1-right:before {
+  content: "";
+  position: absolute;
+  top: 65%;
+  right: -20px;
+  margin-top: -15px;
+  border: 10px solid transparent;
+  border-left: 10px solid #e0edff;
+}
+
+.balloon1-right p {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
 
 .private_chat{
     display: flex;
@@ -551,4 +583,35 @@ background-color: rgba(81, 80, 82, 0.466);
     white-space: pre-wrap;
     overflow-wrap: break-word;
     font-size: 12px;
+}
+
+.userdata{
+    font-size: 16px;
+}
+
+.right{
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.right img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 5px 30px 5px 30px;
+}
+
+.left{
+    display: flex;
+    justify-content: left;
+}
+
+.left img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 5px 30px 5px 30px;
 }

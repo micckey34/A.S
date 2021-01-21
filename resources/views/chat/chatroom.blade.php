@@ -12,8 +12,8 @@
                 <div class="private_chat_select">
                     <img src="{{ $pair->profile_photo_url }}" alt="" width="300px" class="user_img">
                     <div>
-                        <p class="username">{{ $pair->name }}</p>
-                        <p class="username">{{ $pair->age }}</p>
+                        <p class="userdata">{{ $pair->name }}</p>
+                        <p class="userdata">{{ $pair->age }}歳</p>
                     </div>
                  </div>
                 <p class="private_chat_comment">{{ $pair->profile }}</p>
@@ -22,19 +22,32 @@
             <div class="private">
                 <div  class="output">
                     @foreach ($messages as $message)
-                    <div class="group_chat_text">
-                        <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
-                        <div class="balloon1-left">
-                            <p>{{ $message->name }}：{{ $message->message }}</p>
+                    @if($message->user_id == Auth::id())
+                    <div>
+                        <div class="right">
+                            <div class="balloon1-right">
+                                <p>{{ $message->message }}</p>
+                            </div>
+                            <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
                         </div>
                     </div>
+                    @else
+                     <div>
+                         <div class="left">
+                             <img src="{{ $message->profile_photo_url }}" alt="" width="30px" height="30px">
+                             <div class="balloon1-left">
+                                 <p>{{ $message->name }}：{{ $message->message }}</p>
+                             </div>
+                        </div>
+                    </div>
+                    @endif
                     @endforeach
                  </div>
                     <form action="{{ route('chat_message') }}" method="POST">
                     @csrf
                     <input type="hidden" name="chat_id" value="{{ $room->id }}">
                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                    <textarea type="text" name="message" required></textarea>
+                    <textarea type="text" name="message"  cols="30" rows="3" required></textarea>
                     <button type="submit" class="chath1_red">送信</button>
                     </form>
             </div>
