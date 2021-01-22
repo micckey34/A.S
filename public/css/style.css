@@ -277,6 +277,21 @@ header {
     align-items: center;
 }
 
+.like_button2 {
+    background-color: #FFF7C8;
+    width: 230px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 0 #ddd;
+    font-size: 24px;
+    font-weight: bold;
+    color: #E74854;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .like_button:hover {
     background-color: #ffee8c;
 }
