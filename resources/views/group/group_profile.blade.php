@@ -19,9 +19,10 @@
                 <form action="{{ route('group_join') }}" method="POST">
                     @csrf
                     <input type="hidden" name="group_id" value="{{ $group->id }}">
-                    <button type="submit" class="like_button">コミュニティに参加</button>
+                    <button type="submit" class="like_button2">コミュニティに参加</button>
                 </form>
             </div>
         </div>
     </section>
 </x-app-layout>
+
