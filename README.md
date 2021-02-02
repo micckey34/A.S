@@ -1,5 +1,7 @@
 # Machibito
 
+<img src="public/image/machibitologo.png">
+
 ## 〜友人、恋人探しのマッチングアプリ〜
 
 ## 使用技術
