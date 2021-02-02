@@ -3,12 +3,9 @@
 ## 友人、恋人探しのマッチングアプリ
 
 ## 使用技術
-- <Front>
 - HTML
 - CSS
 - Java Script
-
-- <Back>
 - Laravel(Jetstream)
 
 ## プリダクトの機能
