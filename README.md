@@ -1,6 +1,6 @@
 # Machibito
 
-<img src="public/image/machibitologo.png">
+<img src="public/image/machibitologo.png" width='300px'>
 
 ## 〜友人、恋人探しのマッチングアプリ〜
 
